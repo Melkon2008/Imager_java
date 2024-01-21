@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.DashboardFragment"
+    android:orientation="vertical"
+    android:background="@color/seri">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/converterlayaut1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+
+
+
+
+            <Button
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/Yellow"
+                android:textColor="@color/seri"
+                android:id="@+id/openGalleryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose file"
+                />
+
+
+
+            <ImageView
+
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:src="@drawable/draw2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/converterlayaut2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/converterlayaut1">
+
+            <RadioGroup
+                android:id="@+id/converter_radio"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:textColor="@color/Yellow"
+                    android:textSize="17dp"
+                    android:id="@+id/webp_converter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="webp" />
+
+                <RadioButton
+                    android:textColor="@color/Yellow"
+                    android:textSize="17dp"
+                    android:id="@+id/jpeg_converter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="jpeg" />
+
+                <RadioButton
+                    android:textSize="17dp"
+                    android:textColor="@color/Yellow"
+                    android:id="@+id/jpg_converter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="jpg" />
+
+                <RadioButton
+                    android:textSize="17dp"
+                    android:textColor="@color/Yellow"
+                    android:id="@+id/png_converter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="png" />
+
+                <RadioButton
+                    android:textSize="17dp"
+                    android:textColor="@color/Yellow"
+                    android:id="@+id/bmp_converter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bmp" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/layaut_before_after_converter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/Yellow"
+                android:id="@+id/converter_before"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16dp"
+                android:text="Before" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginEnd="15dp"
+                android:gravity="end"
+                android:textColor="@color/Yellow"
+                android:id="@+id/converter_after"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:rotation="0"
+                android:rotationX="0"
+                android:rotationY="0"
+                android:text="After"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/seekbar_converter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <SeekBar
+                android:progressTint="@color/Yellow"
+                android:id="@+id/vorak_coverter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/layaut_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/Yellow"
+                android:id="@+id/transparent_anun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="17dp"
+                android:text="Transparent" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/transparent_seekbar_converter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <SeekBar
+                android:progressTint="@color/Yellow"
+                android:id="@+id/transparent_coverter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+
+
+        </LinearLayout>
+
+
+       <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/Yellow"
+                android:textColorHint="@color/Yellow"
+                app:hintTextColor="@color/Yellow">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pixelx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pixels"
+                    android:textColor="@color/Yellow"
+                    android:textStyle="bold"
+
+
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Pixellll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/Yellow"
+                android:textColorHint="@color/Yellow"
+                app:hintTextColor="@color/Yellow">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pixely"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pixels"
+                    android:textColor="@color/Yellow"
+                    android:textStyle="bold"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout> -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+            <Button
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/Yellow"
+                android:textColor="@color/seri"
+                android:id="@+id/colorpicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Choose Color"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/father_file_name_refractor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/Yellow"
+                android:textColorHint="@color/Yellow"
+                app:hintTextColor="@color/Yellow">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/file_name_refractor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rename File"
+                    android:textColor="@color/Yellow"
+                    android:textStyle="bold"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/button_choose_verj"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/Yellow"
+                android:gravity="center"
+                android:text="Save"
+                android:textColor="@color/seri"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+
+
+        </LinearLayout>
+        
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>

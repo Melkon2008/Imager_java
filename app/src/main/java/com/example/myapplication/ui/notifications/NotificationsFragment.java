@@ -147,6 +147,8 @@ public class NotificationsFragment extends Fragment {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+
+
         } catch (java.io.IOException e) {
             throw new RuntimeException(e);
         }
@@ -213,6 +215,9 @@ public class NotificationsFragment extends Fragment {
                 pdfDocument1.close();
                 pdfReader1.close();
             }
+
+
+
 
             mergedPdf.close();
             pdfWriter.close();

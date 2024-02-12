@@ -1,15 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/seri"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnPickPdf"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnPickPdf"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select pdf files"
+            android:backgroundTint="@color/Yellow"
+            android:textColor="@color/seri"
+            />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/father_file_name_refractor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Выбрать PDF файл"
-        android:layout_centerInParent="true"/>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/Yellow"
+        android:textColorHint="@color/Yellow"
+        app:hintTextColor="@color/Yellow">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_margin="5dp"
+            android:id="@+id/file_name_refractor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rename File"
+            android:textColor="@color/Yellow"
+            android:textStyle="bold"
+            />
 
-</RelativeLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnSavePdf"
+            android:textStyle="bold"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save pdf"
+            android:backgroundTint="@color/Yellow"
+            android:textColor="@color/seri"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -10,20 +10,20 @@
         android:background="@color/seri"
         android:id="@+id/navigation_home"
         android:name="com.example.myapplication.ui.home.HomeFragment"
-        android:label="Open"
+        android:label=""
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:background="@color/seri"
         android:id="@+id/navigation_dashboard"
         android:name="com.example.myapplication.ui.dashboard.DashboardFragment"
-        android:label="Converter"
+        android:label=""
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:background="@color/seri"
         android:id="@+id/navigation_notifications"
         android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
-        android:label="arshivator"
+        android:label=""
         tools:layout="@layout/fragment_notifications" />
 </navigation>

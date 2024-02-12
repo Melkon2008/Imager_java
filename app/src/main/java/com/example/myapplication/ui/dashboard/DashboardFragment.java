@@ -88,6 +88,8 @@ public class  DashboardFragment extends Fragment {
 
     RadioGroup converter_radio;
 
+    Button all_format;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -140,7 +142,6 @@ public class  DashboardFragment extends Fragment {
             }
         });
 
-
         textInputLayout = root.findViewById(R.id.father_file_name_refractor);
 
         converter_after = root.findViewById(R.id.converter_after);
@@ -155,6 +156,7 @@ public class  DashboardFragment extends Fragment {
         RadioButton jpegRadioButton = root.findViewById(R.id.jpeg_converter);
         RadioButton webpRadioButton = root.findViewById(R.id.webp_converter);
         RadioButton bmpRadioButton = root.findViewById(R.id.bmp_converter);
+
         pngRadioButton.setOnClickListener(this::onRadioButtonClicked);
         jpgRadioButton.setOnClickListener(this::onRadioButtonClicked);
         jpegRadioButton.setOnClickListener(this::onRadioButtonClicked);
@@ -186,7 +188,13 @@ public class  DashboardFragment extends Fragment {
         });
 
 
+
         return root;
+    }
+
+    public void fun_all_format(){
+
+
     }
 
 
@@ -200,6 +208,7 @@ public class  DashboardFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+            converter_radio.clearCheck();
             true_or_false = false;
             selectedImageUri = data.getData();
             File file = new File(selectedImageUri.getPath());
@@ -214,7 +223,6 @@ public class  DashboardFragment extends Fragment {
 
             tesnel_image();
 
-            ////////////////////////////////////////////////////
             String filePath = null;
 
             if (selectedImageUri != null && "content".equals(selectedImageUri.getScheme())) {
@@ -240,7 +248,6 @@ public class  DashboardFragment extends Fragment {
             textInputLayout.getEditText().setText(fileName_arancverj);
 
 
-            //////////////////////////////////////////////////////////
 
 
         }
@@ -332,6 +339,7 @@ public class  DashboardFragment extends Fragment {
     private void saveToGallery() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CODE);
+            performSaveToGallery();
         } else {
             performSaveToGallery();
         }
@@ -343,7 +351,7 @@ public class  DashboardFragment extends Fragment {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 performSaveToGallery();
             } else {
-                Toast.makeText(requireContext(), "jogace aper", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -374,7 +382,6 @@ public class  DashboardFragment extends Fragment {
             colorpicker.setEnabled(false);
             openGalleryButton.setEnabled(false);
             anjatel(converter_radio);
-            Toast.makeText(requireContext(), "Wait...", Toast.LENGTH_SHORT).show();
             new Thread(() -> {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), selectedImageUri);
@@ -473,33 +480,7 @@ public class  DashboardFragment extends Fragment {
 
     }
 
-    private void changealpha_to_color() {
-        if (selectedImageUri != null) {
-            int color = color1;
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), selectedImageUri);
-                int width = bitmap.getWidth();
-                int height = bitmap.getHeight();
-                Bitmap newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                int[] pixels = new int[width * height];
-                newBitmap.getPixels(pixels, 0, width, 0, 0, width, height);
-                for (int i = 0; i < pixels.length; i++) {
-                    int alpha = Color.alpha(pixels[i]);
-                    if (alpha == 0) {
-                        pixels[i] = color;
-                    }
-                }
 
-                newBitmap.setPixels(pixels, 0, width, 0, 0, width, height);
-                imageView.setImageBitmap(newBitmap);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-
-        }
-
-    }
 
     private Bitmap tree_changealpha_to_color(Bitmap bitmap, int color) {
         if (selectedImageUri != null) {

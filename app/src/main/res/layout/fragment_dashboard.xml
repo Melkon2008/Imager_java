@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment"
     android:orientation="vertical"
+    android:id="@+id/fragment1"
     android:background="@color/seri">
 
     <LinearLayout

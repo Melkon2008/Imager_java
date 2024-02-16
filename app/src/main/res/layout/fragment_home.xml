@@ -10,30 +10,46 @@
 
 
 
-    <Button
+    <LinearLayout
         android:layout_margin="5dp"
-        android:id="@+id/openGalleryButton"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CHOOSE FILE"
-        android:textColor="@color/seri"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        android:backgroundTint="@color/Yellow">
+        android:id="@+id/glav_yndrel">
+
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/openConvertImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="convert images"
+            android:textColor="@color/seri"
+            android:textStyle="bold"
+
+            android:backgroundTint="@color/Yellow"/>
+
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/openMargeFiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="marge files"
+            android:textColor="@color/seri"
+            android:textStyle="bold"
+
+            android:backgroundTint="@color/Yellow"/>
+
+
+
+    </LinearLayout>
 
 
 
 
 
 
-    </Button>
-
-
-    <ImageView
-        android:layout_margin="5dp"
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="400dp">
-
-    </ImageView>
 </LinearLayout>

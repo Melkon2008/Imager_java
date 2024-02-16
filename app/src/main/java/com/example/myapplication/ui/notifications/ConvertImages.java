@@ -38,7 +38,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationsFragment extends Fragment {
+public class ConvertImages extends Fragment {
 
     private static final int PICK_PDF_REQUEST = 1;
     private FragmentNotificationsBinding binding;
@@ -58,9 +58,11 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
         Button btnpdf = root.findViewById(R.id.btnPickPdf);
         Button btnsavepdf = root.findViewById(R.id.btnSavePdf);
         Button openclosesave = root.findViewById(R.id.btn_open_close);
+
 
         textInputLayout = root.findViewById(R.id.father_file_name_refractor);
 
@@ -215,9 +217,6 @@ public class NotificationsFragment extends Fragment {
                 pdfDocument1.close();
                 pdfReader1.close();
             }
-
-
-
 
             mergedPdf.close();
             pdfWriter.close();

@@ -15,15 +15,15 @@
 
     <fragment
         android:background="@color/seri"
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_converter"
         android:name="com.example.myapplication.ui.dashboard.DashboardFragment"
         android:label=""
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:background="@color/seri"
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_marge"
+        android:name="com.example.myapplication.ui.notifications.ConvertImages"
         android:label=""
         tools:layout="@layout/fragment_notifications" />
 </navigation>

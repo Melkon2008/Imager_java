@@ -1,11 +1,7 @@
 package com.example.myapplication.ui.home;
 
-import static android.app.Activity.RESULT_OK;
-
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
@@ -23,72 +19,43 @@ import com.example.myapplication.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private static final int PICK_IMAGE = 1;
-
-    Button openGalleryButton;
-
-
-    ImageView imageview;
-
-
-
-    Uri selectimageUri;
-    //hRdd7ZWX7Aj7NN98mDuZazP4
+    private Button openConverterimage;
+    private Button openMargeConvert;
+    private ImageView imageView;
+    private Uri selectedImageUri;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        NavOptions navOptions = new NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in)
+                .setExitAnim(R.anim.fade_out)
+                .setPopEnterAnim(R.anim.fade_in)
+                .setPopExitAnim(R.anim.slide_out)
+                .build();
 
-        openGalleryButton = root.findViewById(R.id.openGalleryButton);
-        imageview = root.findViewById(R.id.imageView);
-
-        openGalleryButton.setOnClickListener(new View.OnClickListener() {
+        openConverterimage = root.findViewById(R.id.openConvertImage);
+        openMargeConvert = root.findViewById(R.id.openMargeFiles);
+        openMargeConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGalleryButton();
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main)
+                        .navigate(R.id.navigation_marge, null, navOptions);
+            }
+        });
+        openConverterimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main)
+                        .navigate(R.id.navigation_converter, null, navOptions);
             }
         });
 
-
-
-
-
         return root;
     }
-
-
-
-
-
-
-
-    private void openGalleryButton() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, PICK_IMAGE);
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
-            selectimageUri = data.getData();
-            imageview.setImageURI(selectimageUri);
-
-
-        }
-    }
-
-
-
-
-
-
-
-
 
     @Override
     public void onDestroyView() {

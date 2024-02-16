@@ -32,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
 
-    NotificationsFragment notificationsFragment = new NotificationsFragment();
+    ConvertImages notificationsFragment = new ConvertImages();
 
     public void setDataList(List<ItemModel> dataList){
         this.dataList =  dataList;

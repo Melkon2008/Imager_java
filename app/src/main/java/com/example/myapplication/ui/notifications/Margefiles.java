@@ -32,13 +32,15 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConvertImages extends Fragment {
+public class Margefiles extends Fragment {
 
     private static final int PICK_PDF_REQUEST = 1;
     private FragmentNotificationsBinding binding;
@@ -157,16 +159,6 @@ public class ConvertImages extends Fragment {
         return String.valueOf(pageCount);
     }
 
-    public int pdfPages2(int position2) {
-        int pos = position2;
-        Toast.makeText(requireContext(), "fdfdfd", Toast.LENGTH_LONG).show();
-        Uri uri = listPDFUri.get(pos);
-
-        int pageCount = 0;
-        return pageCount;
-    }
-
-
 
 
     @SuppressLint("Range")
@@ -211,16 +203,26 @@ public class ConvertImages extends Fragment {
             Document document = new Document(mergedPdf);
 
             for (Uri uri : listPDFUri) {
-                PdfReader pdfReader1 = new PdfReader(requireContext().getContentResolver().openInputStream(uri));
-                PdfDocument pdfDocument1 = new PdfDocument(pdfReader1);
-                pdfDocument1.copyPagesTo(1, pdfDocument1.getNumberOfPages(), mergedPdf);
-                pdfDocument1.close();
-                pdfReader1.close();
-            }
+                try (InputStream inputStream = requireContext().getContentResolver().openInputStream(uri);
+                     BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
 
+                    PdfReader pdfReader1 = new PdfReader(bufferedInputStream);
+                    PdfDocument pdfDocument1 = new PdfDocument(pdfReader1);
+                    pdfDocument1.copyPagesTo(1, pdfDocument1.getNumberOfPages(), mergedPdf);
+                    pdfDocument1.close();
+                    pdfReader1.close();
+                    inputStream.close();
+                    bufferedInputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (java.io.IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             mergedPdf.close();
             pdfWriter.close();
             document.close();
+
 
 
             Toast.makeText(requireContext(), "Pdf document" + outputFile.getAbsolutePath(), Toast.LENGTH_LONG).show();

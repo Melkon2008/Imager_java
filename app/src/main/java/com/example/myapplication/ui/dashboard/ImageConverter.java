@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ import java.io.IOException;
 
 
 
-public class  DashboardFragment extends Fragment {
+public class ImageConverter extends Fragment {
     private static final int REQUEST_PERMISSION_CODE = 123;
 
     boolean true_or_false = false;
@@ -88,6 +89,8 @@ public class  DashboardFragment extends Fragment {
 
     RadioGroup converter_radio;
 
+    Switch on_off_cuectal;
+
     Button all_format;
 
 
@@ -98,6 +101,7 @@ public class  DashboardFragment extends Fragment {
         View root = binding.getRoot();
         seekBar = root.findViewById(R.id.vorak_coverter);
         seekBar1 = root.findViewById(R.id.transparent_coverter);
+
         seekBar1.setMax(255);
         seekBar.setProgress(100);
         seekBar1.setProgress(255);
@@ -116,12 +120,15 @@ public class  DashboardFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar1) {
-                tapancik = seekBar1.getProgress();
-                tesnel_image();
+
+                    tapancik = seekBar1.getProgress();
+                    tesnel_image();
+                }
 
 
-            }
         });
+
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -141,6 +148,8 @@ public class  DashboardFragment extends Fragment {
 
             }
         });
+
+        on_off_cuectal = root.findViewById(R.id.switch1);
 
         textInputLayout = root.findViewById(R.id.father_file_name_refractor);
 
@@ -166,6 +175,17 @@ public class  DashboardFragment extends Fragment {
         openGalleryButton = root.findViewById(R.id.openGalleryButton);
         convertAndSaveGallery = root.findViewById(R.id.button_choose_verj);
         colorpicker = root.findViewById(R.id.colorpicker);
+
+        on_off_cuectal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(on_off_cuectal.isChecked() == true){
+                    tesnel_image();
+                }
+
+            }
+        });
+
 
         convertAndSaveGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -375,7 +395,7 @@ public class  DashboardFragment extends Fragment {
     }
 
     private void tesnel_image() {
-        if (selectedImageUri != null && converter_iamge_2 != null) {
+        if (selectedImageUri != null && converter_iamge_2 != null && on_off_cuectal.isChecked() == true) {
             seekBar.setEnabled(false);
             seekBar1.setEnabled(false);
             convertAndSaveGallery.setEnabled(false);

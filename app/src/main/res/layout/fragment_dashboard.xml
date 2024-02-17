@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment"
+    tools:context=".ui.dashboard.ImageConverter"
     android:orientation="vertical"
     android:id="@+id/fragment1"
     android:background="@color/seri">
@@ -38,7 +38,6 @@
                 />
 
 
-
             <ImageView
 
                 android:id="@+id/imageView"
@@ -47,6 +46,34 @@
                 android:src="@drawable/draw2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:id="@+id/switch_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/switch1"
+                android:layout_centerVertical="true"
+                android:text="see the changes"
+                android:textColor="@color/Yellow" />
+
+
+            <Switch
+                android:thumbTint="@color/Yellow"
+                android:checked="true"
+                android:textColor="@color/Yellow"
+                android:layout_gravity="center"
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+
+
 
 
 
@@ -215,58 +242,7 @@
         </LinearLayout>
 
 
-       <!-- <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:orientation="vertical">
 
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/Yellow"
-                android:textColorHint="@color/Yellow"
-                app:hintTextColor="@color/Yellow">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pixelx"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Pixels"
-                    android:textColor="@color/Yellow"
-                    android:textStyle="bold"
-
-
-
-                    />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/Pixellll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/Yellow"
-                android:textColorHint="@color/Yellow"
-                app:hintTextColor="@color/Yellow">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pixely"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Pixels"
-                    android:textColor="@color/Yellow"
-                    android:textStyle="bold"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-        </LinearLayout> -->
 
         <LinearLayout
             android:layout_width="match_parent"

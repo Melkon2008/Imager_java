@@ -15,14 +15,20 @@
     <fragment
         android:background="@color/seri"
         android:id="@+id/navigation_converter"
-        android:name="com.example.myapplication.ui.dashboard.ImageConverter"
+        android:name="com.example.myapplication.ui.Converter.ImageConverter"
         android:label=""
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:background="@color/seri"
         android:id="@+id/navigation_marge"
-        android:name="com.example.myapplication.ui.notifications.Margefiles"
+        android:name="com.example.myapplication.ui.FileMarge.Margefiles"
         android:label=""
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:label=""
+        android:id="@+id/navigation_contrast"
+        android:name="com.example.myapplication.ui.ContrastImage.Contrastimage"
+        tools:layout="@layout/contrast_image"/>
 </navigation>

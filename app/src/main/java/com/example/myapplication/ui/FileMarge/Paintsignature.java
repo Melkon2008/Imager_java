@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.notifications;
+package com.example.myapplication.ui.FileMarge;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

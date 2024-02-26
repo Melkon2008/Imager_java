@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.notifications;
+package com.example.myapplication.ui.FileMarge;
 
 import android.graphics.Color;
 import android.net.Uri;
@@ -162,7 +162,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             super(itemView);
             layaut_open_close = itemView.findViewById(R.id.layaut_open_close);
-            btn_open_close = itemView.findViewById(R.id.btn_open_close);
             lblItemName = itemView.findViewById(R.id.lblItemName);
             lblItemDetails = itemView.findViewById(R.id.lblItemDetails);
             cardView = itemView.findViewById(R.id.cardView);

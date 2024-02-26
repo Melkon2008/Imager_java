@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/seri"
+    android:id="@+id/ContrastImage"
+    android:orientation="vertical">
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/btncontrastimage2"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Image"
+            android:backgroundTint="@color/Yellow"
+            android:textColor="@color/seri"
+            />
+
+
+    <ImageView
+        android:id="@+id/contrast_image_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

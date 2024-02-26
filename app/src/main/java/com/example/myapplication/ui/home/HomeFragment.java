@@ -1,12 +1,10 @@
 package com.example.myapplication.ui.home;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,10 +17,7 @@ import com.example.myapplication.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private static final int PICK_IMAGE = 1;
-    private Button openConverterimage;
-    private Button openMargeConvert;
-    private ImageView imageView;
-    private Uri selectedImageUri;
+    private Button openConverterimage, openMargeConvert, openContrastimage;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,6 +34,15 @@ public class HomeFragment extends Fragment {
 
         openConverterimage = root.findViewById(R.id.openConvertImage);
         openMargeConvert = root.findViewById(R.id.openMargeFiles);
+        openContrastimage = root.findViewById(R.id.openContrastImage);
+
+        openContrastimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main)
+                        .navigate(R.id.navigation_contrast, null, navOptions);
+            }
+        });
         openMargeConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

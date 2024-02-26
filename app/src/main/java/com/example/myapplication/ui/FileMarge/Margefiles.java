@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.notifications;
+package com.example.myapplication.ui.FileMarge;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -63,7 +63,6 @@ public class Margefiles extends Fragment {
 
         Button btnpdf = root.findViewById(R.id.btnPickPdf);
         Button btnsavepdf = root.findViewById(R.id.btnSavePdf);
-        Button openclosesave = root.findViewById(R.id.btn_open_close);
 
 
         textInputLayout = root.findViewById(R.id.father_file_name_refractor);
@@ -180,7 +179,8 @@ public class Margefiles extends Fragment {
         if (listPDFUri.size() != 0) {
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_PDF_REQUEST);
-            } else {
+            }
+            else {
                 mergeAndSavePdf();
             }
         }
@@ -201,18 +201,49 @@ public class Margefiles extends Fragment {
             PdfWriter pdfWriter = new PdfWriter(new FileOutputStream(outputFile));
             PdfDocument mergedPdf = new PdfDocument(pdfWriter);
             Document document = new Document(mergedPdf);
-
-            for (Uri uri : listPDFUri) {
-                try (InputStream inputStream = requireContext().getContentResolver().openInputStream(uri);
+            int listitems = 0;
+            for (int i = 0; i < listPDFUri.size(); i++) {
+                try (InputStream inputStream = requireContext().getContentResolver().openInputStream(listPDFUri.get(i));
                      BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
-
                     PdfReader pdfReader1 = new PdfReader(bufferedInputStream);
+                    pdfReader1.setUnethicalReading(true);
                     PdfDocument pdfDocument1 = new PdfDocument(pdfReader1);
-                    pdfDocument1.copyPagesTo(1, pdfDocument1.getNumberOfPages(), mergedPdf);
+                    inputStream.close();
+                    int max_pages = pdfDocument1.getNumberOfPages();
+                    boolean pages_true_false = true;
+                    int j1 = 1;
+                    if(max_pages >= 10 && pages_true_false){
+                        for(int j = 1; j <= max_pages; j+=10){
+                            if((j - 10) < 10){
+                                j1 = j;
+                                pages_true_false = false;
+                                break;
+                            }
+                            else{
+                                pdfDocument1.copyPagesTo(j, j + 10, mergedPdf);
+                            }
+                        }
+                    }
+                    if(pages_true_false == false){
+                            pdfDocument1.copyPagesTo(j1, max_pages, mergedPdf);
+                            pages_true_false = true;
+                    }
+                    else if(max_pages < 10){
+                        pdfDocument1.copyPagesTo(1, max_pages, mergedPdf);
+
+                    }
+
+
+                    //pdfDocument1.copyPagesTo(1, pdfDocument1.getNumberOfPages(), mergedPdf);
                     pdfDocument1.close();
                     pdfReader1.close();
-                    inputStream.close();
-                    bufferedInputStream.close();
+
+                    listPDFUri.remove(listitems);
+                    listitems++;
+
+
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (java.io.IOException e) {
@@ -225,10 +256,13 @@ public class Margefiles extends Fragment {
 
 
 
+
+
             Toast.makeText(requireContext(), "Pdf document" + outputFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
             listPDFUri.clear();
             list.clear();
             recyclerView.getAdapter().notifyDataSetChanged();
+            tiv_array = 0;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (java.io.IOException e) {

@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.dashboard;
+package com.example.myapplication.ui.Converter;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -49,6 +49,8 @@ import java.io.IOException;
 
 
 public class ImageConverter extends Fragment {
+
+
     private static final int REQUEST_PERMISSION_CODE = 123;
 
     boolean true_or_false = false;
@@ -356,14 +358,7 @@ public class ImageConverter extends Fragment {
     }
 
 
-    private void saveToGallery() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CODE);
-            performSaveToGallery();
-        } else {
-            performSaveToGallery();
-        }
-    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -452,6 +447,14 @@ public class ImageConverter extends Fragment {
             }
         } else {
             Toast.makeText(requireContext(), "Selected image is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void saveToGallery() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CODE);
+        } else {
+            saveImage();
         }
     }
 

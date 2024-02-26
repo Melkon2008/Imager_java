@@ -71,21 +71,14 @@ public class Contrastimage extends Fragment {
 
     public static Bitmap increaseContrast(Bitmap bitmap) {
         // Создаем матрицу для увеличения контраста
-        ColorMatrix colorMatrix = new ColorMatrix(new float[]{
-                2, 0, 0, 0, 0,
-                0, 2, 0, 0, 0,
-                0, 0, 2, 0, 0,
-                0, 0, 0, 1, 0
-        });
+        ColorMatrix colorMatrix = new ColorMatrix();
+        colorMatrix.setSaturation(0);
 
-        // Создаем фильтр, используя матрицу контраста
-        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(colorMatrix);
-
-        // Применяем фильтр к изображению
+        // Применяем матрицу к изображению
         Bitmap newBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         android.graphics.Canvas canvas = new android.graphics.Canvas(newBitmap);
         android.graphics.Paint paint = new android.graphics.Paint();
-        paint.setColorFilter(filter);
+        paint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
         canvas.drawBitmap(bitmap, 0, 0, paint);
 
         return newBitmap;

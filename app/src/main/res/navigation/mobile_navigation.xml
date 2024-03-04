@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+
     app:startDestination="@+id/navigation_home">
 
     <fragment
@@ -17,18 +18,18 @@
         android:id="@+id/navigation_converter"
         android:name="com.example.myapplication.ui.Converter.ImageConverter"
         android:label=""
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/imageformat" />
 
     <fragment
         android:background="@color/seri"
         android:id="@+id/navigation_marge"
-        android:name="com.example.myapplication.ui.FileMarge.Margefiles"
+        android:name="com.example.myapplication.ui.File_Merge.Margefiles"
         android:label=""
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/pdfmerge" />
 
     <fragment
         android:label=""
         android:id="@+id/navigation_contrast"
-        android:name="com.example.myapplication.ui.ContrastImage.Contrastimage"
-        tools:layout="@layout/contrast_image"/>
+        android:name="com.example.myapplication.ui.ContrastImage.Split_pdf"
+        tools:layout="@layout/split_pdf"/>
 </navigation>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/seri"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -36,16 +36,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@color/Yellow"
-        android:textColorHint="@color/Yellow"
-        app:hintTextColor="@color/Yellow">
+        app:boxStrokeColor="@color/seri"
+        android:textColorHint="@color/seri"
+        app:hintTextColor="@color/seri">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_margin="5dp"
             android:id="@+id/file_name_refractor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Rename File"
-            android:textColor="@color/Yellow"
+            android:textColor="@color/seri"
             android:textStyle="bold"
             />
 

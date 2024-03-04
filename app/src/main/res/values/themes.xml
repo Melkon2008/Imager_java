@@ -16,7 +16,7 @@
     </style>
 
     <style name="CustomDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowBackground">@color/seri</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
 </resources>

@@ -40,6 +40,7 @@ android {
 
 
     dependencies {
+        implementation("org.opencv:opencv:4.9.0")
         implementation("com.github.skydoves:colorpickerview:2.3.0")
         implementation("com.itextpdf:itext7-core:7.1.16")
         implementation("androidx.appcompat:appcompat:1.6.1")

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Define box stroke color -->
+        <item name="boxStrokeColor">@color/Yellow</item>
+        <!-- Define hint text color -->
+        <item name="android:textColorHint">@color/seri</item>
+        <!-- Define background color -->
+        <item name="android:background">@color/Yellow</item>
+        <!-- Define hint text color for pre-filled text -->
+        <item name="hintTextColor">@color/seri</item>
+    </style>
+
+</resources>

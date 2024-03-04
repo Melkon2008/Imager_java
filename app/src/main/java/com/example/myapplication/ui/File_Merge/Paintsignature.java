@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.FileMarge;
+package com.example.myapplication.ui.File_Merge;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

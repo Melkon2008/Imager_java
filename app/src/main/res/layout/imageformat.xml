@@ -7,7 +7,7 @@
     tools:context=".ui.Converter.ImageConverter"
     android:orientation="vertical"
     android:id="@+id/fragment1"
-    android:background="@color/seri">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                 android:layout_toEndOf="@id/switch1"
                 android:layout_centerVertical="true"
                 android:text="see the changes"
-                android:textColor="@color/Yellow" />
+                android:textColor="@color/seri" />
 
 
             <Switch
@@ -97,7 +97,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:textColor="@color/Yellow"
+                    android:textColor="@color/seri"
                     android:textSize="17dp"
                     android:id="@+id/webp_converter"
                     android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
                     android:text="webp" />
 
                 <RadioButton
-                    android:textColor="@color/Yellow"
+                    android:textColor="@color/seri"
                     android:textSize="17dp"
                     android:id="@+id/jpeg_converter"
                     android:layout_width="wrap_content"
@@ -114,7 +114,7 @@
 
                 <RadioButton
                     android:textSize="17dp"
-                    android:textColor="@color/Yellow"
+                    android:textColor="@color/seri"
                     android:id="@+id/jpg_converter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
 
                 <RadioButton
                     android:textSize="17dp"
-                    android:textColor="@color/Yellow"
+                    android:textColor="@color/seri"
                     android:id="@+id/png_converter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
 
                 <RadioButton
                     android:textSize="17dp"
-                    android:textColor="@color/Yellow"
+                    android:textColor="@color/seri"
                     android:id="@+id/bmp_converter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
             <TextView
                 android:textStyle="bold"
                 android:layout_marginLeft="15dp"
-                android:textColor="@color/Yellow"
+                android:textColor="@color/seri"
                 android:id="@+id/converter_before"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                 android:textStyle="bold"
                 android:layout_marginEnd="15dp"
                 android:gravity="end"
-                android:textColor="@color/Yellow"
+                android:textColor="@color/seri"
                 android:id="@+id/converter_after"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/Yellow"
+                android:textColor="@color/seri"
                 android:id="@+id/transparent_anun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -266,15 +266,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/Yellow"
-                android:textColorHint="@color/Yellow"
-                app:hintTextColor="@color/Yellow">
+                app:boxStrokeColor="@color/seri"
+                android:textColorHint="@color/seri"
+                app:hintTextColor="@color/seri">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/file_name_refractor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Rename File"
-                    android:textColor="@color/Yellow"
+                    android:textColor="@color/seri"
                     android:textStyle="bold"
                     />
 

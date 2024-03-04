@@ -37,7 +37,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.FragmentDashboardBinding;
+import com.example.myapplication.databinding.ImageformatBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;
@@ -55,7 +55,7 @@ public class ImageConverter extends Fragment {
 
     boolean true_or_false = false;
 
-    private FragmentDashboardBinding binding;
+    private ImageformatBinding binding;
     private ImageView imageView;
     private static final int PICK_IMAGE = 1;
     SeekBar seekBar;
@@ -99,7 +99,7 @@ public class ImageConverter extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         DashboardViewModel dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = ImageformatBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         seekBar = root.findViewById(R.id.vorak_coverter);
         seekBar1 = root.findViewById(R.id.transparent_coverter);

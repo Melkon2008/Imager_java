@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.FileMarge;
+package com.example.myapplication.ui.File_Merge;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.FragmentNotificationsBinding;
+import com.example.myapplication.databinding.PdfmergeBinding;
 import com.google.android.material.textfield.TextInputLayout;
 import com.itextpdf.io.IOException;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -43,7 +43,7 @@ import java.util.List;
 public class Margefiles extends Fragment {
 
     private static final int PICK_PDF_REQUEST = 1;
-    private FragmentNotificationsBinding binding;
+    private PdfmergeBinding binding;
 
     private int tiv_array;
     private List<Uri> listPDFUri = new ArrayList<>();
@@ -57,7 +57,7 @@ public class Margefiles extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = PdfmergeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 

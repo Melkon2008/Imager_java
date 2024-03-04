@@ -5,25 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment"
-    android:background="@color/seri"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
 
-    <LinearLayout
-        android:layout_margin="5dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/glav_yndrel">
-
 
         <Button
-            android:layout_margin="5dp"
+
+            android:layout_margin="10dp"
             android:id="@+id/openConvertImage"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
             android:text="convert images"
             android:textColor="@color/seri"
             android:textStyle="bold"
@@ -32,11 +26,10 @@
 
 
         <Button
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:id="@+id/openMargeFiles"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="marge files"
             android:textColor="@color/seri"
             android:textStyle="bold"
@@ -48,18 +41,16 @@
 
 
 
-    </LinearLayout>
+
 
     <Button
         android:layout_margin="10dp"
         android:id="@+id/openContrastImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:text="contrast image"
+        android:text="pdf"
         android:textColor="@color/seri"
         android:textStyle="bold"
-
         android:backgroundTint="@color/Yellow"/>
 
 

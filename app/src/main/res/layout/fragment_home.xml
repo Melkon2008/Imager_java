@@ -48,7 +48,7 @@
         android:id="@+id/openContrastImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="pdf"
+        android:text="Split pdf"
         android:textColor="@color/seri"
         android:textStyle="bold"
         android:backgroundTint="@color/Yellow"/>

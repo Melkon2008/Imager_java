@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,7 +70,13 @@ public class Split_pdf extends Fragment {
         btn_save_split_pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                savePDFFiles();
+                if(itemList.size() != 0 && PDFselected != null){
+                    savePDFFiles();
+                }
+                else{
+                    Toast.makeText(requireContext(), "Pick File", Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });
@@ -192,9 +199,30 @@ public class Split_pdf extends Fragment {
             }
         }
 
+    /*List<ItemModel> allItems = adapter.getAllItems();
+        if(allItems.size() == 1){
+            ItemModel itemModel = allItems.get(0);
+        StringBuilder pdf_1 = new StringBuilder();
+        StringBuilder pdf_2 = new StringBuilder();
+
+        pdf_1.append(itemModel.getItemName());
+        pdf_2.append(itemModel.getItemDetails());
+        int pdf_pages_start = Integer.valueOf(String.valueOf(pdf_1));
+        int pdf_pages_end =  Integer.valueOf(String.valueOf(pdf_2));
+
+        if((pdf_1 != null || pdf_2 != null) && (pdf_pages_start < pdf_pages_end) && (pdf_pages_start > 0)) {
+
+        }
+
+    }*/
+
+
 
     public void splitAndSavePdf() {
         List<ItemModel> allItems = adapter.getAllItems();
+        if(allItems.size() == 1){
+
+        }
         File outputDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "PDfmarge");
         if (!outputDir.exists()) {
             outputDir.mkdirs();
@@ -216,7 +244,7 @@ public class Split_pdf extends Fragment {
              pdfReader1.setUnethicalReading(true);
              PdfDocument pdfDocument1 = new PdfDocument(pdfReader1);
              inputStream.close();
-
+             int max_pages = pdfDocument1.getNumberOfPages();
             for (ItemModel item : allItems) {
                 StringBuilder pdf_1 = new StringBuilder();
                 StringBuilder pdf_2 = new StringBuilder();
@@ -226,7 +254,8 @@ public class Split_pdf extends Fragment {
                 pdf_2.append(item.getItemDetails());
                 int pdf_pages_start = Integer.valueOf(String.valueOf(pdf_1));
                 int pdf_pages_end =  Integer.valueOf(String.valueOf(pdf_2));
-                if(pdf_1 != null || pdf_2 != null){
+                if((pdf_1 != null || pdf_2 != null) && (pdf_pages_start < pdf_pages_end) && (pdf_pages_start > 0 && pdf_pages_end <= max_pages)){
+
                     pdfDocument1.copyPagesTo(pdf_pages_start, pdf_pages_end, mergedPdf);
                 }
 
@@ -239,7 +268,9 @@ public class Split_pdf extends Fragment {
             mergedPdf.close();
             pdfWriter.close();
             document.close();
-
+            itemList.clear();
+            adapter.notifyDataSetChanged();
+            Toast.makeText(requireContext(), "Pdf document" + outputFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

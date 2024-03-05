@@ -252,9 +252,16 @@ public class Split_pdf extends Fragment {
 
                 pdf_1.append(item.getItemName());
                 pdf_2.append(item.getItemDetails());
-                int pdf_pages_start = Integer.valueOf(String.valueOf(pdf_1));
-                int pdf_pages_end =  Integer.valueOf(String.valueOf(pdf_2));
-                if((pdf_1.length() != 0 || pdf_2.length() != 0) && (pdf_pages_start < pdf_pages_end) && (pdf_pages_start > 0 && pdf_pages_end <= max_pages)){
+                String pd1 = pdf_1.toString();
+                String pd2 = pdf_2.toString();
+                int pdf_pages_start = 0;
+                int pdf_pages_end = 0;
+                if(!(pd1.isEmpty()) && !(pd2.isEmpty())){
+                    pdf_pages_start = Integer.valueOf(String.valueOf(pdf_1));
+                    pdf_pages_end =  Integer.valueOf(String.valueOf(pdf_2));
+                }
+
+                if((!(pd1.isEmpty()) || !(pd2.isEmpty())) && (pdf_pages_start < pdf_pages_end) && (pdf_pages_start > 0 && pdf_pages_end <= max_pages)){
 
                     pdfDocument1.copyPagesTo(pdf_pages_start, pdf_pages_end, mergedPdf);
                 }

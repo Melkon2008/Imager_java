@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.home;
+package com.imager.edit_it.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.home;
+package com.imager.edit_it.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
-import com.example.myapplication.R;
-import com.example.myapplication.databinding.FragmentHomeBinding;
+import com.imager.edit_it.R;
+import com.imager.edit_it.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.ui.home.HomeFragment"
+        android:name="com.imager.edit_it.ui.home.HomeFragment"
         android:label=""
         tools:layout="@layout/fragment_home" />
 
@@ -16,20 +16,20 @@
     <fragment
         android:background="@color/seri"
         android:id="@+id/navigation_converter"
-        android:name="com.example.myapplication.ui.Converter.ImageConverter"
+        android:name="com.imager.edit_it.ui.Converter.ImageConverter"
         android:label=""
         tools:layout="@layout/imageformat" />
 
     <fragment
         android:background="@color/seri"
         android:id="@+id/navigation_marge"
-        android:name="com.example.myapplication.ui.File_Merge.Margefiles"
+        android:name="com.imager.edit_it.ui.File_Merge.Margefiles"
         android:label=""
         tools:layout="@layout/pdfmerge" />
 
     <fragment
         android:label=""
         android:id="@+id/navigation_contrast"
-        android:name="com.example.myapplication.ui.Split_pdf.Split_pdf"
+        android:name="com.imager.edit_it.ui.Split_pdf.Split_pdf"
         tools:layout="@layout/split_pdf"/>
 </navigation>

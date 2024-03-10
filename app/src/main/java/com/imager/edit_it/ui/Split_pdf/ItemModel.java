@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.Split_pdf;
+package com.imager.edit_it.ui.Split_pdf;
 
 public class ItemModel {
     private String itemName;

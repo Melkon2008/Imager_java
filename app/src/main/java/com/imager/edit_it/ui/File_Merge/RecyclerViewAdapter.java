@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.File_Merge;
+package com.imager.edit_it.ui.File_Merge;
 
 import android.graphics.Color;
 import android.net.Uri;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+import com.imager.edit_it.R;
 
 import java.util.Collections;
 import java.util.List;

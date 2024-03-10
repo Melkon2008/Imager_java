@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.Converter;
+package com.imager.edit_it.ui.Converter;
 
 import android.app.Dialog;
 import android.os.Bundle;

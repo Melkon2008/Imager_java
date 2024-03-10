@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.Split_pdf;
+package com.imager.edit_it.ui.Split_pdf;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+import com.imager.edit_it.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.itextpdf.io.IOException;
 import com.itextpdf.kernel.pdf.PdfDocument;

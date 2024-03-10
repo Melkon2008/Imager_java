@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.File_Merge;
+package com.imager.edit_it.ui.File_Merge;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;

@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.Converter;
+package com.imager.edit_it.ui.Converter;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.myapplication.R;
+import com.imager.edit_it.R;
 
 public class dialogwindow extends DialogFragment {
 

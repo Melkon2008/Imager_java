@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.Converter;
+package com.imager.edit_it.ui.Converter;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -36,8 +36,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myapplication.R;
-import com.example.myapplication.databinding.ImageformatBinding;
+import com.imager.edit_it.R;
+import com.imager.edit_it.databinding.ImageformatBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;

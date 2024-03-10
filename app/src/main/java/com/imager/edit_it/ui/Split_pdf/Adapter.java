@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.Split_pdf;
+package com.imager.edit_it.ui.Split_pdf;
 
 import android.content.Context;
 import android.text.Editable;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+import com.imager.edit_it.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;

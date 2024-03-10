@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.File_Merge;
+package com.imager.edit_it.ui.File_Merge;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -23,8 +23,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
-import com.example.myapplication.databinding.PdfmergeBinding;
+import com.imager.edit_it.R;
+import com.imager.edit_it.databinding.PdfmergeBinding;
 import com.google.android.material.textfield.TextInputLayout;
 import com.itextpdf.io.IOException;
 import com.itextpdf.kernel.pdf.PdfDocument;

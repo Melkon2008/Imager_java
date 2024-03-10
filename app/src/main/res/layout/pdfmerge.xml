@@ -17,7 +17,7 @@
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select pdf files"
+            android:text="Select files"
             android:backgroundTint="@color/Yellow"
             android:textColor="@color/seri"
             />

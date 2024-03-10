@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <Button
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:id="@+id/btncontrastimage2"
         android:textStyle="bold"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         />
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="5dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="6dp"
@@ -29,7 +29,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Yellow"> <!-- Ваш RelativeLayout -->
+        android:background="@color/Yellow">
 
         <LinearLayout
             android:id="@+id/glav_recaycl"
@@ -85,7 +85,7 @@
 </androidx.cardview.widget.CardView>
     <Button
         android:layout_gravity="center"
-        android:layout_margin="5dp"
+
         android:backgroundTint="@color/Yellow"
         android:textColor="@color/seri"
         android:textSize="25dp"
@@ -96,22 +96,62 @@
         android:text="+"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:background="@drawable/res_adapter"
+        android:backgroundTint="#E3DFDF"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:paddingTop="16dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
 
         />
 
-    <Button
-        android:id="@+id/save_split_pdf"
-        android:text="Save"
-        android:textColor="@color/seri"
-        android:textSize="17dp"
+    <LinearLayout
+        android:background="#E3DFDF"
+        android:orientation="vertical"
+        android:id="@+id/linear_split"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/Yellow"/>
+        android:layout_height="wrap_content">
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/father_file_name_refractor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/seri"
+            android:textColorHint="@color/seri"
+            app:hintTextColor="@color/seri">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_margin="5dp"
+                android:id="@+id/file_name_refractor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rename File"
+                android:textColor="@color/seri"
+                android:textStyle="bold"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/save_split_pdf"
+            android:text="Save"
+            android:textColor="@color/seri"
+            android:textSize="17dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/Yellow"/>
+
+
+
+    </LinearLayout>
 
 
 

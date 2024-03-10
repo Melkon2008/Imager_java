@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.ContrastImage;
+package com.example.myapplication.ui.Split_pdf;
 
 public class ItemModel {
     private String itemName;

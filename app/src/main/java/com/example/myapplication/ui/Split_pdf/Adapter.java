@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.ContrastImage;
+package com.example.myapplication.ui.Split_pdf;
 
 import android.content.Context;
 import android.text.Editable;
@@ -28,7 +28,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_remove, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.maket_split, parent, false);
         return new ViewHolder(view);
     }
 

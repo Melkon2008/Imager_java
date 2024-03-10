@@ -25,7 +25,7 @@ public class Colorpickerwindow extends DialogFragment {
 
     public int colorpic;
 
-    public boolean true_or_false = false;
+
 
     @NonNull
     @Override

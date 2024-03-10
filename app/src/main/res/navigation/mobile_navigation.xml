@@ -30,6 +30,6 @@
     <fragment
         android:label=""
         android:id="@+id/navigation_contrast"
-        android:name="com.example.myapplication.ui.ContrastImage.Split_pdf"
+        android:name="com.example.myapplication.ui.Split_pdf.Split_pdf"
         tools:layout="@layout/split_pdf"/>
 </navigation>

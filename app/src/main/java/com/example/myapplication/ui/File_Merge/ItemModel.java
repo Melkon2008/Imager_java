@@ -7,6 +7,8 @@ public class ItemModel {
 
 
 
+
+
     public ItemModel(String name, String detail) {
         Name = name;
         Detail = detail;

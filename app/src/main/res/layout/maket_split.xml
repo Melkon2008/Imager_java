@@ -27,7 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
+                android:layout_margin="5dp"
                 android:layout_marginEnd="8dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:boxStrokeColor="@color/black"
@@ -38,7 +38,7 @@
                     android:id="@+id/file_namfe_refrasctor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:hint="with pages"
                     android:inputType="number"
                     android:background="@null"
                     android:textColor="@color/seri"
@@ -56,6 +56,7 @@
                 android:text="-"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_margin="5dp"
                 android:id="@+id/father_file_nadme_refractor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,7 +72,7 @@
                     android:id="@+id/file_namdsfe_refrasctor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2"
+                    android:hint="to the page"
                     android:inputType="number"
                     android:background="@null"
                     android:textColor="@color/seri"

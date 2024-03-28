@@ -181,6 +181,9 @@ public class Margefiles extends Fragment {
                 ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_PDF_REQUEST);
             }
             else {
+
+
+
                 mergeAndSavePdf();
             }
         }

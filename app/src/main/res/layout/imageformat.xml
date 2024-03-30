@@ -30,7 +30,7 @@
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:backgroundTint="@color/Yellow"
-                android:textColor="@color/seri"
+                android:textColor="@color/white"
                 android:id="@+id/openGalleryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 android:layout_toEndOf="@id/switch1"
                 android:layout_centerVertical="true"
                 android:text="see the changes"
-                android:textColor="@color/seri" />
+                android:textColor="@color/white" />
 
 
             <Switch
@@ -253,7 +253,7 @@
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:backgroundTint="@color/Yellow"
-                android:textColor="@color/seri"
+                android:textColor="@color/white"
                 android:id="@+id/colorpicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -291,7 +291,7 @@
                 android:backgroundTint="@color/Yellow"
                 android:gravity="center"
                 android:text="Save"
-                android:textColor="@color/seri"
+                android:textColor="@color/white"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 

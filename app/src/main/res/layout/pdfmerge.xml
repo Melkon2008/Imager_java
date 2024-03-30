@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Select files"
             android:backgroundTint="@color/Yellow"
-            android:textColor="@color/seri"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Save pdf"
             android:backgroundTint="@color/Yellow"
-            android:textColor="@color/seri"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 

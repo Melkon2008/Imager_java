@@ -38,10 +38,11 @@
                     android:id="@+id/file_namfe_refrasctor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/white"
                     android:hint="with pages"
                     android:inputType="number"
                     android:background="@null"
-                    android:textColor="@color/seri"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -50,7 +51,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:textColor="@color/seri"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="-"/>
@@ -73,9 +74,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="to the page"
+                    android:textColorHint="@color/white"
                     android:inputType="number"
                     android:background="@null"
-                    android:textColor="@color/seri"
+                    android:textColor="@color/back_color"
                     android:textStyle="bold" />
 
             </com.google.android.material.textfield.TextInputLayout>

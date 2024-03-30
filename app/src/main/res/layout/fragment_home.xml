@@ -12,31 +12,31 @@
 
 
         <Button
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:layout_margin="10dp"
             android:id="@+id/openConvertImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/file"
+            android:layout_height="60dp"
+
             android:drawablePadding="8dp"
             android:text="convert images"
-            android:textColor="@color/seri"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:gravity="left|center_vertical"
             android:backgroundTint="@color/Yellow"/>
 
         <Button
-            
+
             android:backgroundTint="@color/Yellow"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:layout_margin="10dp"
             android:id="@+id/openMargeFiles"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="merge files"
-            android:textColor="@color/seri"
+            android:textColor="@color/white"
             android:textStyle="bold"
-            android:drawableRight="@drawable/file1"
+
             android:drawablePadding="8dp"
             android:gravity="left|center_vertical"/>
 
@@ -48,20 +48,18 @@
 
 
     <Button
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:layout_margin="10dp"
         android:id="@+id/openContrastImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:text="Split pdf"
-        android:textColor="@color/seri"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:drawableRight="@drawable/document"
+
         android:drawablePadding="8dp"
         android:backgroundTint="@color/Yellow"
         android:gravity="left|center_vertical"/>
-
-
 
 
 </LinearLayout>

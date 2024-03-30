@@ -9,9 +9,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#eeeeee</color>
     <color name="seri123">@color/teal_200</color>
-    <color name="Yellow">#e2b714</color>
-    <color name="Yellow_bacot">#CAA51A</color>
-    <color name="seri">#323437</color>
+    <color name="Yellow">#374751</color>
+    <color name="Yellow_bacot">#6A7478</color>
+    <color name="seri">#636363</color>
     <color name="qichm_Seri">#3E4145</color>
     <color name="glxavor_Seri">#2A2B2E</color>
 

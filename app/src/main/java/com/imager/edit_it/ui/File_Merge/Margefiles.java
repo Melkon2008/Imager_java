@@ -149,6 +149,8 @@ public class Margefiles extends Fragment {
             pageCount = pdfDocument1.getNumberOfPages();
             reader.close();
             pdfDocument1.close();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {

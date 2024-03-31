@@ -6,8 +6,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +44,7 @@ import java.util.List;
 public class Split_pdf extends Fragment {
 
     private static final int PICK_PDF_REQUEST = 1;
+    private static final int REQUEST_CODE_MANAGE_STORAGE_PERMISSION = 123;
 
     TextInputLayout textInputLayout;
 
@@ -196,21 +199,16 @@ public class Split_pdf extends Fragment {
     }
 
 
-    private void savePDFFiles() {
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_PDF_REQUEST);
-            }
-            else {
-                stugelpdf();
-                /*List<ItemModel> allItems1 = adapter.getAllItems();
-                if (allItems1.size() == 1) {
-                    splitAndSavePdf_2();
-                }
-                else{
-                    splitAndSavePdf();
-                }*/
-            }
+    public Boolean savePDFFiles() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+            startActivityForResult(intent, REQUEST_CODE_MANAGE_STORAGE_PERMISSION);
+        } else {
+            stugelpdf();
         }
+        return null;
+    }
+
 
     private void stugelpdf(){
         List<ItemModel> allItems2 = adapter.getAllItems();

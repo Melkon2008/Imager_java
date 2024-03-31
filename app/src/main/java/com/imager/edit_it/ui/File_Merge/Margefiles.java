@@ -6,8 +6,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,7 @@ import java.util.List;
 public class Margefiles extends Fragment {
 
     private static final int PICK_PDF_REQUEST = 1;
+    private static final int REQUEST_CODE_MANAGE_STORAGE_PERMISSION = 123;
     private PdfmergeBinding binding;
 
     private int tiv_array;
@@ -175,19 +178,16 @@ public class Margefiles extends Fragment {
         return result;
     }
 
-    private void savePDFFiles() {
-        if (listPDFUri.size() != 0) {
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_PDF_REQUEST);
-            }
-            else {
-
-
-
-                mergeAndSavePdf();
-            }
+    public Boolean savePDFFiles() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !Environment.isExternalStorageManager()) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+            startActivityForResult(intent, REQUEST_CODE_MANAGE_STORAGE_PERMISSION);
+        } else {
+            mergeAndSavePdf();
         }
+        return null;
     }
+
 
     private void mergeAndSavePdf() {
         try {

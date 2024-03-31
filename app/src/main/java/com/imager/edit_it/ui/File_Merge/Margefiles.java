@@ -158,6 +158,8 @@ public class Margefiles extends Fragment {
 
 
         } catch (java.io.IOException e) {
+
+
             throw new RuntimeException(e);
         }
         return String.valueOf(pageCount);

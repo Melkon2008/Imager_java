@@ -153,6 +153,7 @@ public class Margefiles extends Fragment {
 
         } catch (IOException e) {
             e.printStackTrace();
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
 

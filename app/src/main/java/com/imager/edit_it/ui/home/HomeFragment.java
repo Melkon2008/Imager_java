@@ -17,7 +17,7 @@ import com.imager.edit_it.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private static final int PICK_IMAGE = 1;
-    private Button openConverterimage, openMargeConvert, openContrastimage;
+    private Button openConverterimage, openMargeConvert, openContrastimage, openCloud;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,6 +35,16 @@ public class HomeFragment extends Fragment {
         openConverterimage = root.findViewById(R.id.openConvertImage);
         openMargeConvert = root.findViewById(R.id.openMargeFiles);
         openContrastimage = root.findViewById(R.id.openContrastImage);
+        openCloud = root.findViewById(R.id.Cloud_save);
+
+
+        openCloud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main)
+                        .navigate(R.id.navigation_cloud, null, navOptions);
+            }
+        });
 
         openContrastimage.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,4 +32,13 @@
         android:id="@+id/navigation_contrast"
         android:name="com.imager.edit_it.ui.Split_pdf.Split_pdf"
         tools:layout="@layout/split_pdf"/>
+
+
+    <fragment
+        android:background="@color/seri"
+        android:id="@+id/navigation_cloud"
+        android:name="com.imager.edit_it.ui.Login_reg.Cloud_Login_reg"
+        tools:layout="@layout/login" />
+
+
 </navigation>

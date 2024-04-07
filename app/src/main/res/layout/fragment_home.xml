@@ -62,4 +62,24 @@
         android:gravity="left|center_vertical"/>
 
 
+    <Button
+        android:layout_marginTop="420dp"
+        android:textSize="16dp"
+        android:layout_marginHorizontal="10dp"
+
+        android:id="@+id/Cloud_save"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Cloud save"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+
+        android:drawablePadding="8dp"
+        android:backgroundTint="@color/Yellow"
+        android:gravity="left|center_vertical"/>
+
+
+
+
+
 </LinearLayout>

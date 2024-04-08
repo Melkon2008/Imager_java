@@ -8,16 +8,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-
-import com.imager.edit_it.databinding.LoginBinding;
+import com.imager.edit_it.databinding.SignInBinding;
 
 
 public class Cloud_Login_reg extends Fragment {
 
-    private LoginBinding binding;
+    private SignInBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = LoginBinding.inflate(inflater, container, false);
+        binding = SignInBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 

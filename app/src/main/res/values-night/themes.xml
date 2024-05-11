@@ -9,8 +9,19 @@
         <item name="colorSecondary">@color/Yellow</item>
         <item name="colorSecondaryVariant">@color/qichm_Seri</item>
         <item name="colorOnSecondary">@color/Yellow</item>
-        <!-- Status bar color. -->
+
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <item name="buttonStyle">@color/seri</item>
+
+        <item name="android:windowBackground">@color/Yellow</item>
+
+    </style>
+
+    <style name="BottomNavigationTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:windowBackground">@color/Yellow</item>
     </style>
 </resources>

@@ -26,7 +26,7 @@
             android:textSize="35dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign In"/>
+            android:text="Sign up"/>
 
 
 
@@ -49,7 +49,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_margin="5dp"
-                android:id="@+id/email_sign_in"
+                android:id="@+id/sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Login"
@@ -80,7 +80,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_margin="10dp"
-                android:id="@+id/password_sign_in"
+                android:id="@+id/password_log"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -99,7 +99,25 @@
 
 
 
+    <com.google.android.material.textfield.TextInputLayout
 
+        android:id="@+id/glav_confim_password_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_margin="10dp"
+            android:id="@+id/confim_password_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confim Password"
+            android:textStyle="bold"
+            android:inputType="textPassword"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <LinearLayout
@@ -114,7 +132,7 @@
 
 
     <Button
-        android:id="@+id/btn_sign_in"
+        android:id="@+id/btn_signin"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20dp"
@@ -125,7 +143,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Sign IN"/>
+        android:text="Sign up"/>
 
     <LinearLayout
         android:layout_margin="15dp"
@@ -140,16 +158,15 @@
             android:layout_height="wrap_content"
             android:text="Doesn't have an account yet?"/>
         <TextView
-            android:id="@+id/Sign_up_txt"
+            android:id="@+id/Sign_in_txt"
             android:textSize="14sp"
             android:textColor="#0080e8"
             android:textStyle="bold"
             android:layout_marginStart="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up"/>
+            android:text="Sign in"/>
     </LinearLayout>
-
 
 
 

@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
 
 }
 
@@ -39,7 +40,8 @@ android {
 
 
     dependencies {
-        implementation("org.opencv:opencv:4.9.0")
+        implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+        implementation("com.google.firebase:firebase-analytics")
         implementation("com.github.skydoves:colorpickerview:2.3.0")
         implementation("com.itextpdf:itext7-core:7.1.16")
         implementation("androidx.appcompat:appcompat:1.6.1")
@@ -54,4 +56,7 @@ android {
         implementation("androidx.core:core-ktx:+")
         implementation("androidx.core:core-ktx:+")
         implementation("com.google.android.gms:play-services-base:18.3.0")
+        implementation("com.google.firebase:firebase-auth:22.3.1")
+        implementation("com.google.firebase:firebase-database:20.3.1")
+        implementation("com.google.firebase:firebase-storage:20.3.0")
     }

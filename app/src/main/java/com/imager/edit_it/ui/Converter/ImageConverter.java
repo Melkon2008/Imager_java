@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -36,16 +37,26 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.imager.edit_it.R;
 import com.imager.edit_it.databinding.ImageformatBinding;
 import com.google.android.material.textfield.TextInputLayout;
+import com.imager.edit_it.databinding.SignInBinding;
+import com.imager.edit_it.ui.Login_reg.Cloud_Sing_in;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-
+import java.io.InputStream;
+import java.util.UUID;
 
 
 public class ImageConverter extends Fragment {
@@ -53,16 +64,12 @@ public class ImageConverter extends Fragment {
 
     private static final int REQUEST_PERMISSION_CODE = 123;
 
-    boolean true_or_false = false;
+    boolean true_or_false = false, save_cloud = false;
 
     private ImageformatBinding binding;
     private ImageView imageView;
     private static final int PICK_IMAGE = 1;
-    SeekBar seekBar;
-
-
-    SeekBar seekBar1;
-
+    SeekBar seekBar, seekBar1;
     int tapancik = 255;
 
     int vorak = 100;
@@ -78,27 +85,30 @@ public class ImageConverter extends Fragment {
 
     TextInputLayout textInputLayout;
 
-
-    Button convertAndSaveGallery;
-
-
-    Button colorpicker;
-
-    Button openGalleryButton;
+    Button colorpicker, openGalleryButton, convertAndSaveGallery;
 
     RadioButton radioButton;
-
 
     RadioGroup converter_radio;
 
     Switch on_off_cuectal;
 
-    Button all_format;
+
+    public String login, password;
+
+
+
+
+    private FirebaseAuth mAuth;
+
+    private DatabaseReference firebaseDatabase;
+
+
+
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
         binding = ImageformatBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         seekBar = root.findViewById(R.id.vorak_coverter);
@@ -107,6 +117,8 @@ public class ImageConverter extends Fragment {
         seekBar1.setMax(255);
         seekBar.setProgress(100);
         seekBar1.setProgress(255);
+
+
 
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -209,15 +221,38 @@ public class ImageConverter extends Fragment {
             }
         });
 
+        mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance("https://edit-it-v2-default-rtdb.europe-west1.firebasedatabase.app").getReference();
 
-
+        checkSavedUser();
         return root;
     }
 
-    public void fun_all_format(){
+    public void checkSavedUser() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("user_info", getActivity().MODE_PRIVATE);
+        login = preferences.getString("email", null);
+        password = preferences.getString("password", null);
+        if (login != null && password != null) {
 
+            signInWithEmailAndPassword(login, password);
 
+        }
     }
+
+
+    public void signInWithEmailAndPassword(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user != null) {
+                    save_cloud = true;
+                }
+            } else {
+                Toast.makeText(getActivity(), "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
     private void openGallery() {
@@ -480,7 +515,11 @@ public class ImageConverter extends Fragment {
 
                 File file = new File(customFolder, imagename + converter_iamge_1);
                 FileOutputStream outputStream = new FileOutputStream(file);
+
                 bitmap.compress(converter_iamge_2, vorak, outputStream);
+                if(save_cloud){
+                    uploadAndSaveImage(bitmap);
+                }
                 outputStream.flush();
                 outputStream.close();
                 MediaScannerConnection.scanFile(requireContext(), new String[]{file.getAbsolutePath()}, null, null);
@@ -489,6 +528,7 @@ public class ImageConverter extends Fragment {
                     customDialog.setCancelable(false);
                     customDialog.dismiss();
                     try {
+
                         Toast.makeText(requireContext(), "Image saved", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -502,6 +542,56 @@ public class ImageConverter extends Fragment {
         }).start();
 
     }
+
+    private void uploadAndSaveImage(Bitmap bitmap) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null && bitmap != null) {
+            // Ссылка на Firebase Storage
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+
+            // Создание ссылки для файла изображения в Firebase Storage
+            String imageId = UUID.randomUUID().toString(); // Генерация уникального идентификатора для изображения
+            StorageReference imagesRef = storageRef.child("images/" + user.getUid() + "/" + imageId + ".jpg");
+
+            // Преобразование Bitmap в массив байтов
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(converter_iamge_2, vorak, baos);
+            byte[] imageData = baos.toByteArray();
+
+            // Загрузка массива байтов в Firebase Storage
+            UploadTask uploadTask = imagesRef.putBytes(imageData);
+
+            // Обработка завершения загрузки
+            uploadTask.addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    // Получение URL загруженного изображения
+                    imagesRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String imageUrl = uri.toString();
+
+                        // Сохранение URL изображения в Firebase Realtime Database
+                        DatabaseReference userRef = firebaseDatabase.child("users").child(user.getUid()).child("profileImageUrls");
+                        // Генерируем уникальный ключ для каждого изображения
+                        String imageKey = userRef.push().getKey();
+                        userRef.child(imageKey).setValue(imageUrl)
+                                .addOnCompleteListener(saveTask -> {
+                                    if (saveTask.isSuccessful()) {
+                                        Toast.makeText(getActivity(), "Image URL saved to database.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(getActivity(), "Failed to save image URL to database.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(getActivity(), "Failed to retrieve download URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+                } else {
+                    Toast.makeText(getActivity(), "Failed to upload image: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(getActivity(), "User or image is null.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
 
@@ -531,6 +621,9 @@ public class ImageConverter extends Fragment {
 
 
     }
+
+
+
 
 
     private Bitmap two_change_alhpa(Bitmap bitmap, int color){

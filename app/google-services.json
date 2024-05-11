@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25512206787",
+    "project_id": "edit-it-v2",
+    "storage_bucket": "edit-it-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25512206787:android:c52a10064bf0b22b6edd76",
+        "android_client_info": {
+          "package_name": "com.imager.edit_it"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsg8gHj491stRz_aKd7W3agAq0qwjK0Z8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

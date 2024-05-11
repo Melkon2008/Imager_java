@@ -9,6 +9,23 @@
         <item name="android:background">@color/Yellow</item>
         <!-- Define hint text color for pre-filled text -->
         <item name="hintTextColor">@color/seri</item>
+
+
+
+
+
     </style>
+
+    <style name="NavigationButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+
+
+
+
 
 </resources>

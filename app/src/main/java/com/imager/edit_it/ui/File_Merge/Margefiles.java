@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -13,6 +14,8 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -21,6 +24,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,6 +59,9 @@ public class Margefiles extends Fragment {
     private RecyclerViewAdapter adapter;
     private TextInputLayout textInputLayout;
 
+    Button btnpdf;
+    Button btnsavepdf;
+
 
 
 
@@ -64,8 +71,8 @@ public class Margefiles extends Fragment {
         View root = binding.getRoot();
 
 
-        Button btnpdf = root.findViewById(R.id.btnPickPdf);
-        Button btnsavepdf = root.findViewById(R.id.btnSavePdf);
+        btnpdf = root.findViewById(R.id.btnPickPdf);
+        btnsavepdf = root.findViewById(R.id.btnSavePdf);
 
 
         textInputLayout = root.findViewById(R.id.father_file_name_refractor);
@@ -103,8 +110,13 @@ public class Margefiles extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
+
         return root;
     }
+
+
+
+
 
     private void pickPdfFile() {
         Intent intent = new Intent();

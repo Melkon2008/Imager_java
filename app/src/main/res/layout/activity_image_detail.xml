@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Login_reg.ImageDetailActivity">
+
+    <ImageView
+        android:id="@+id/idIVImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true" />
+
+    <LinearLayout
+        android:background="#cacccb"
+        android:id="@+id/buttonsLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_above="@id/idIVImage">
+
+
+        <Button
+
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:id="@+id/btn_save"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:drawableLeft="@drawable/baseline_arrow_downward_24"
+            android:text="Save" />
+
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:drawableLeft="@drawable/deleteicon"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:text="Delete"
+            android:layout_width="125dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

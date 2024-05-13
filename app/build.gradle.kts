@@ -40,6 +40,12 @@ android {
 
 
     dependencies {
+
+        implementation("com.squareup.picasso:picasso:2.71828")
+        implementation("androidx.cardview:cardview:1.0.0")
+
+        implementation("com.github.bumptech.glide:glide:4.12.0")
+
         implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
         implementation("com.google.firebase:firebase-analytics")
         implementation("com.github.skydoves:colorpickerview:2.3.0")
@@ -59,4 +65,5 @@ android {
         implementation("com.google.firebase:firebase-auth:22.3.1")
         implementation("com.google.firebase:firebase-database:20.3.1")
         implementation("com.google.firebase:firebase-storage:20.3.0")
+        implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     }

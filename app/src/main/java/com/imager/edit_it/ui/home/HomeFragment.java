@@ -45,8 +45,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        BottomNavigationView bottomNavigationView = root.findViewById(R.id.nav_view);
-
 
         NavOptions navOptions = new NavOptions.Builder()
                 .setEnterAnim(R.anim.slide_in)
@@ -64,34 +62,6 @@ public class HomeFragment extends Fragment {
 
 
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-                NavDestination currentDestination = navController.getCurrentDestination();
-                if (currentDestination != null) {
-                    int currentId = currentDestination.getId();
-                    if (itemId == R.id.navigation_my_account_v2 && currentId != R.id.navigation_my_account) {
-                        navController.navigate(R.id.navigation_my_account, null, navOptions);
-
-                        return true;
-                    }
-                    if (itemId == R.id.navigation_home_v2 && currentId != R.id.navigation_home) {
-                        navController.navigate(R.id.navigation_home, null, navOptions);
-
-                        return true;
-                    }
-                    if (itemId == R.id.navigation_settings_v2 && currentId != R.id.navigation_settings) {
-                        navController.navigate(R.id.navigation_settings, null, navOptions);
-
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-        });
 
 
 
@@ -118,6 +88,7 @@ public class HomeFragment extends Fragment {
                 else{
                     Navigation.findNavController(v)
                             .navigate(R.id.navigation_cloud_Sign_up, null, navOptions);
+
 
 
                 }

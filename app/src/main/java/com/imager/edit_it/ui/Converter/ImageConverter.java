@@ -518,7 +518,7 @@ public class ImageConverter extends Fragment {
 
                 bitmap.compress(converter_iamge_2, vorak, outputStream);
                 if(save_cloud){
-                    uploadAndSaveImage(bitmap);
+                    uploadAndSaveImage(bitmap, customDialog);
                 }
                 outputStream.flush();
                 outputStream.close();
@@ -526,7 +526,6 @@ public class ImageConverter extends Fragment {
 
                 requireActivity().runOnUiThread(() -> {
                     customDialog.setCancelable(false);
-                    customDialog.dismiss();
                     try {
 
                         Toast.makeText(requireContext(), "Image saved", Toast.LENGTH_SHORT).show();
@@ -543,52 +542,51 @@ public class ImageConverter extends Fragment {
 
     }
 
-    private void uploadAndSaveImage(Bitmap bitmap) {
+    private void uploadAndSaveImage(Bitmap bitmap, dialogwindow customDialog) {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null && bitmap != null) {
-            // Ссылка на Firebase Storage
+
             StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
-            // Создание ссылки для файла изображения в Firebase Storage
-            String imageId = UUID.randomUUID().toString(); // Генерация уникального идентификатора для изображения
+            String imageId = UUID.randomUUID().toString();
             StorageReference imagesRef = storageRef.child("images/" + user.getUid() + "/" + imageId + ".jpg");
 
-            // Преобразование Bitmap в массив байтов
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(converter_iamge_2, vorak, baos);
             byte[] imageData = baos.toByteArray();
 
-            // Загрузка массива байтов в Firebase Storage
             UploadTask uploadTask = imagesRef.putBytes(imageData);
 
-            // Обработка завершения загрузки
             uploadTask.addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    // Получение URL загруженного изображения
+
                     imagesRef.getDownloadUrl().addOnSuccessListener(uri -> {
                         String imageUrl = uri.toString();
 
-                        // Сохранение URL изображения в Firebase Realtime Database
                         DatabaseReference userRef = firebaseDatabase.child("users").child(user.getUid()).child("profileImageUrls");
-                        // Генерируем уникальный ключ для каждого изображения
                         String imageKey = userRef.push().getKey();
                         userRef.child(imageKey).setValue(imageUrl)
                                 .addOnCompleteListener(saveTask -> {
                                     if (saveTask.isSuccessful()) {
                                         Toast.makeText(getActivity(), "Image URL saved to database.", Toast.LENGTH_SHORT).show();
+
                                     } else {
                                         Toast.makeText(getActivity(), "Failed to save image URL to database.", Toast.LENGTH_SHORT).show();
                                     }
+                                    customDialog.dismiss();
                                 });
                     }).addOnFailureListener(e -> {
                         Toast.makeText(getActivity(), "Failed to retrieve download URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        customDialog.dismiss();
                     });
                 } else {
                     Toast.makeText(getActivity(), "Failed to upload image: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    customDialog.dismiss();
                 }
             });
         } else {
             Toast.makeText(getActivity(), "User or image is null.", Toast.LENGTH_SHORT).show();
+            customDialog.dismiss();
         }
     }
 

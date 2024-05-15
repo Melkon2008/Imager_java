@@ -1,33 +1,51 @@
 // ImageDetailActivity.java
 package com.imager.edit_it.ui.Login_reg;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.imager.edit_it.R;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class ImageDetailActivity extends AppCompatActivity {
 
+    private static final int REQUEST_WRITE_EXTERNAL_STORAGE = 123;
     private String imgPath;
     private ImageView imageView;
     private ScaleGestureDetector scaleGestureDetector;
     private float mScaleFactor = 1.0f;
 
-    private Button btnDelete;
+    private Button btnDelete, btnsave;
 
 
 
@@ -42,8 +60,11 @@ public class ImageDetailActivity extends AppCompatActivity {
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
         btnDelete = findViewById(R.id.btn_delete);
+        btnsave = findViewById(R.id.btn_save);
         btnDelete.setOnClickListener(v -> deleteImage());
 
+
+        btnsave.setOnClickListener(v -> imagesave());
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -72,6 +93,69 @@ public class ImageDetailActivity extends AppCompatActivity {
             return true;
         }
     }
+
+    private void imagesave() {
+        String folderName = "Converterimage";
+
+        File customFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), folderName);
+        if (!customFolder.exists()) {
+            customFolder.mkdirs();
+        }
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl(imgPath);
+        storageRef.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+            @Override
+            public void onSuccess(StorageMetadata storageMetadata) {
+                String imgpath = storageMetadata.getContentType();
+                String imagename = storageMetadata.getName();
+                String[] parts = imgpath.split("/");
+                String[] imageparts = imagename.split("\\|");
+
+                imagename = imageparts[1];
+
+                imgpath = parts[1];
+
+
+                final File localFile;
+                try {
+                    localFile = File.createTempFile(imagename, imgpath);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                String finalImgpath = imgpath;
+                String finalImagename = imagename;
+                storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    File file = new File(customFolder, finalImagename + "." + finalImgpath);
+                    try {
+                        FileOutputStream outputStream = new FileOutputStream(file);
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+
+                        outputStream.flush();
+                        outputStream.close();
+                        MediaScannerConnection.scanFile(ImageDetailActivity.this, new String[]{file.getAbsolutePath()}, null, null);
+
+                        Toast.makeText(ImageDetailActivity.this, "CHotkie", Toast.LENGTH_SHORT).show();
+                    } catch (FileNotFoundException e) {
+
+                        Toast.makeText(ImageDetailActivity.this, "che", Toast.LENGTH_SHORT).show();
+                        throw new RuntimeException(e);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+            }
+        });
+    }
+
+
+
 
     private void deleteImage() {
         FirebaseStorage storage = FirebaseStorage.getInstance();

@@ -501,7 +501,7 @@ public class ImageConverter extends Fragment {
                 dialogwindow customDialog = new dialogwindow();
                 customDialog.show(getChildFragmentManager(), "CustomProgressDialog");
                 customDialog.setCancelable(false);
-                String imagename = String.valueOf(textInputLayout.getEditText().getText() + String.valueOf(System.currentTimeMillis()));
+                String imagename = String.valueOf(textInputLayout.getEditText().getText());
 
                 String folderName = "Converterimage";
 
@@ -547,9 +547,9 @@ public class ImageConverter extends Fragment {
         if (user != null && bitmap != null) {
 
             StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-
+            String imagenamefirebase = textInputLayout.getEditText().getText() + String.valueOf(System.currentTimeMillis());
             String imageId = UUID.randomUUID().toString();
-            StorageReference imagesRef = storageRef.child("images/" + user.getUid() + "/" + imageId + ".jpg");
+            StorageReference imagesRef = storageRef.child("images/" + user.getUid() + "/" + imageId + "|" + imagenamefirebase);
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(converter_iamge_2, vorak, baos);

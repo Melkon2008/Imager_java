@@ -21,41 +21,46 @@
             android:layout_marginLeft="10dp"
             android:text="Edit it"
             android:textColor="@color/Yellow"
-            android:textSize="50dp"
+            android:textSize="75dp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/openConvertImage"
-        android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/Yellow"
-        android:drawablePadding="8dp"
-        android:gravity="left|center_vertical"
-        android:text="convert images"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/openMargeFiles"
-        android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/Yellow"
-        android:drawablePadding="8dp"
-        android:gravity="left|center_vertical"
-        android:text="merge files"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/openConvertImage"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/Yellow"
+            android:drawablePadding="8dp"
+            android:gravity="left|center_vertical"
+            android:text="convert images"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <Button
+
+            android:id="@+id/openMargeFiles"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/Yellow"
+            android:drawablePadding="8dp"
+            android:gravity="left|center_vertical"
+            android:text="merge files"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+
 
     <Button
         android:id="@+id/openContrastImage"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="70dp"
         android:layout_margin="10dp"
         android:backgroundTint="@color/Yellow"
         android:drawablePadding="8dp"
@@ -68,7 +73,7 @@
     <Button
         android:id="@+id/Cloud_save"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="70dp"
         android:layout_margin="10dp"
         android:backgroundTint="@color/Yellow"
         android:drawablePadding="8dp"
@@ -78,10 +83,6 @@
         android:textSize="16dp"
         android:textStyle="bold" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
 
 

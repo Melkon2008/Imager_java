@@ -112,6 +112,8 @@ public class Cloud_Sing_up extends Fragment {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
+                                                        Navigation.findNavController(v)
+                                                                .navigate(R.id.navigation_cloud_Sign_in, null, navOptions);
                                                         Toast.makeText(getActivity(), "User email added to database", Toast.LENGTH_SHORT).show();
                                                     } else {
                                                         Toast.makeText(getActivity(), "Failed to add user email to database", Toast.LENGTH_SHORT).show();

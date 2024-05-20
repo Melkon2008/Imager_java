@@ -25,7 +25,8 @@
 
 
         <Button
-
+            android:backgroundTint="@color/Yellow"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:textColor="@color/white"
             android:id="@+id/btn_save"
@@ -38,6 +39,8 @@
 
 
         <Button
+            android:backgroundTint="@color/Yellow"
+            android:layout_gravity="center"
             android:id="@+id/btn_delete"
             android:drawableLeft="@drawable/deleteicon"
             android:layout_marginEnd="10dp"

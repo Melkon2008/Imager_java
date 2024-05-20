@@ -221,70 +221,40 @@ public class Margefiles extends Fragment {
             PdfWriter pdfWriter = new PdfWriter(new FileOutputStream(outputFile));
             PdfDocument mergedPdf = new PdfDocument(pdfWriter);
             Document document = new Document(mergedPdf);
-            int listitems = 0;
-            for (int i = 0; i < listPDFUri.size(); i++) {
-                try (InputStream inputStream = requireContext().getContentResolver().openInputStream(listPDFUri.get(i));
+
+            for (Uri uri : listPDFUri) {
+                try (InputStream inputStream = requireContext().getContentResolver().openInputStream(uri);
                      BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
-                    PdfReader pdfReader1 = new PdfReader(bufferedInputStream);
-                    pdfReader1.setUnethicalReading(true);
-                    PdfDocument pdfDocument1 = new PdfDocument(pdfReader1);
-                    inputStream.close();
-                    int max_pages = pdfDocument1.getNumberOfPages();
-                    boolean pages_true_false = true;
-                    int j1 = 1;
-                    if(max_pages >= 10 && pages_true_false){
-                        for(int j = 1; j <= max_pages; j+=10){
-                            if((j - 10) < 10){
-                                j1 = j;
-                                pages_true_false = false;
-                                break;
-                            }
-                            else{
-                                pdfDocument1.copyPagesTo(j, j + 10, mergedPdf);
-                            }
-                        }
-                    }
-                    if(pages_true_false == false){
-                            pdfDocument1.copyPagesTo(j1, max_pages, mergedPdf);
-                            pages_true_false = true;
-                    }
-                    else if(max_pages < 10){
-                        pdfDocument1.copyPagesTo(1, max_pages, mergedPdf);
+                    PdfReader pdfReader = new PdfReader(bufferedInputStream);
+                    pdfReader.setUnethicalReading(true);
+                    PdfDocument pdfDocument = new PdfDocument(pdfReader);
+                    int maxPages = pdfDocument.getNumberOfPages();
 
+                    for (int i = 1; i <= maxPages; i++) {
+                        pdfDocument.copyPagesTo(i, i, mergedPdf);
                     }
 
-
-                    //pdfDocument1.copyPagesTo(1, pdfDocument1.getNumberOfPages(), mergedPdf);
-                    pdfDocument1.close();
-                    pdfReader1.close();
-
-                    listPDFUri.remove(listitems);
-                    listitems++;
-
-
-
-
+                    pdfDocument.close();
+                    pdfReader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                } catch (java.io.IOException e) {
-                    throw new RuntimeException(e);
+                    Toast.makeText(requireContext(), "Error processing file: " + uri.getPath(), Toast.LENGTH_SHORT).show();
                 }
             }
+
+            document.close();
             mergedPdf.close();
             pdfWriter.close();
-            document.close();
 
-
-
-
-
-            Toast.makeText(requireContext(), "Pdf document" + outputFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), "Pdf document saved: " + outputFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
             listPDFUri.clear();
             list.clear();
             recyclerView.getAdapter().notifyDataSetChanged();
             tiv_array = 0;
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (java.io.IOException e) {
             throw new RuntimeException(e);
         }

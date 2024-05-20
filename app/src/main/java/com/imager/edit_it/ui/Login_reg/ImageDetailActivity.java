@@ -1,4 +1,3 @@
-// ImageDetailActivity.java
 package com.imager.edit_it.ui.Login_reg;
 
 import android.Manifest;
@@ -110,12 +109,12 @@ public class ImageDetailActivity extends AppCompatActivity {
                 String imgpath = storageMetadata.getContentType();
                 String imagename = storageMetadata.getName();
                 String[] parts = imgpath.split("/");
-                String[] imageparts = imagename.split("\\|");
+                String[] partsimagename = imagename.split("\\|");
 
-                imagename = imageparts[1];
+
 
                 imgpath = parts[1];
-
+                imagename = partsimagename[1];
 
                 final File localFile;
                 try {
@@ -124,6 +123,7 @@ public class ImageDetailActivity extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
                 String finalImgpath = imgpath;
+
                 String finalImagename = imagename;
                 storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
@@ -136,10 +136,10 @@ public class ImageDetailActivity extends AppCompatActivity {
                         outputStream.close();
                         MediaScannerConnection.scanFile(ImageDetailActivity.this, new String[]{file.getAbsolutePath()}, null, null);
 
-                        Toast.makeText(ImageDetailActivity.this, "CHotkie", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ImageDetailActivity.this, "Image saved", Toast.LENGTH_SHORT).show();
                     } catch (FileNotFoundException e) {
 
-                        Toast.makeText(ImageDetailActivity.this, "che", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ImageDetailActivity.this, "Failed to save image", Toast.LENGTH_SHORT).show();
                         throw new RuntimeException(e);
                     } catch (IOException e) {
                         throw new RuntimeException(e);

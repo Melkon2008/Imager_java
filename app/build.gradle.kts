@@ -38,14 +38,12 @@ android {
 }
 
 
-
     dependencies {
-
+        implementation("com.airbnb.android:lottie:6.4.0")
         implementation("com.squareup.picasso:picasso:2.71828")
         implementation("androidx.cardview:cardview:1.0.0")
-
+        implementation("androidx.security:security-crypto:1.1.0-alpha03")
         implementation("com.github.bumptech.glide:glide:4.12.0")
-
         implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
         implementation("com.google.firebase:firebase-analytics")
         implementation("com.github.skydoves:colorpickerview:2.3.0")

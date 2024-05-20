@@ -3,9 +3,13 @@ package com.imager.edit_it.ui.Login_reg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Pair;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,15 +60,20 @@ public class Cloud_save extends Fragment {
         // Initialize views
         imagesRV = rootView.findViewById(R.id.idRVImages);
         swipeRefreshLayout = rootView.findViewById(R.id.swipeRefreshLayout);
-
-        // Prepare recycler view
+        
         prepareRecyclerView();
 
-        // Load images from Firebase Storage
         loadImagesFromFirebase();
 
-        // Setup swipe to refresh listener
         swipeRefreshLayout.setOnRefreshListener(() -> loadImagesFromFirebase());
+
+
+        final DisplayMetrics displayMetrics=getResources().getDisplayMetrics();
+        float screenWidthInDp=displayMetrics.widthPixels/displayMetrics.density;
+        final float screenHeightInDp=displayMetrics.heightPixels/displayMetrics.density;
+
+        screenWidthInDp = screenHeightInDp / 4;
+
 
         return rootView;
     }
@@ -76,7 +85,6 @@ public class Cloud_save extends Fragment {
         GridLayoutManager manager = new GridLayoutManager(context, 4);
         imagesRV.setLayoutManager(manager);
         imagesRV.setAdapter(imageRVAdapter);
-
         imageRVAdapter.setOnImageClickListener(imagePath -> openImageDetailActivity(imagePath));
     }
 

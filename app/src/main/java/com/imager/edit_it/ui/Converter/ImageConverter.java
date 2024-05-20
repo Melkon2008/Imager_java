@@ -97,6 +97,11 @@ public class ImageConverter extends Fragment {
     public String login, password;
 
 
+    boolean image_save, image_save_2 = false;
+
+
+
+
 
 
     private FirebaseAuth mAuth;
@@ -204,7 +209,7 @@ public class ImageConverter extends Fragment {
         convertAndSaveGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveToGallery();
+                saveImage();
             }
         });
         openGalleryButton.setOnClickListener(new View.OnClickListener() {
@@ -277,7 +282,7 @@ public class ImageConverter extends Fragment {
             vorak = 100;
             imageView.setImageURI(data.getData());
 
-
+            image_save = true;
             tesnel_image();
 
             String filePath = null;
@@ -314,6 +319,8 @@ public class ImageConverter extends Fragment {
         radioButton = (RadioButton) view;
         boolean checked = radioButton.isChecked();
         String text = radioButton.getText().toString();
+
+        image_save_2 = true;
         switch (text) {
             case "png":
                 if (checked) {
@@ -462,7 +469,7 @@ public class ImageConverter extends Fragment {
                             String glavAfterString = String.format("%.2f", glavFileAfter);
                             converter_after.setText("After:" + glavAfterString + "MB");
 
-                           
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -476,22 +483,14 @@ public class ImageConverter extends Fragment {
 
 
     private void performSaveToGallery() {
-        if (selectedImageUri != null) {
-            if (converter_iamge_1 != null) {
+        if (image_save && image_save_2) {
                 saveImage();
-            }
+
         } else {
             Toast.makeText(requireContext(), "Selected image is null", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void saveToGallery() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CODE);
-        } else {
-            saveImage();
-        }
-    }
 
 
     private void saveImage() {
@@ -547,7 +546,7 @@ public class ImageConverter extends Fragment {
         if (user != null && bitmap != null) {
 
             StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-            String imagenamefirebase = textInputLayout.getEditText().getText() + String.valueOf(System.currentTimeMillis());
+            String imagenamefirebase = String.valueOf(textInputLayout.getEditText().getText());
             String imageId = UUID.randomUUID().toString();
             StorageReference imagesRef = storageRef.child("images/" + user.getUid() + "/" + imageId + "|" + imagenamefirebase);
 

@@ -1,7 +1,7 @@
-// RecyclerViewAdapter.java (адаптер RecyclerView)
 package com.imager.edit_it.ui.Login_reg;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,19 +40,31 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String imagePath = imagePaths.get(position);
+
+        // Set dynamic width and height for ImageView
+        setDynamicImageSize(holder.imageView);
+
         Glide.with(context)
                 .load(imagePath)
                 .placeholder(R.drawable.res_dialogwindow)
                 .into(holder.imageView);
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onImageClickListener != null) {
-                    onImageClickListener.onImageClick(imagePath);
-                }
+        holder.imageView.setOnClickListener(v -> {
+            if (onImageClickListener != null) {
+                onImageClickListener.onImageClick(imagePath);
             }
         });
+    }
+
+    private void setDynamicImageSize(ImageView imageView) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int screenWidth = displayMetrics.widthPixels;
+        int itemSize = screenWidth / 4; // Divide by number of columns
+
+        ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
+        layoutParams.width = itemSize;
+        layoutParams.height = itemSize; // Making the height same as width to keep it square
+        imageView.setLayoutParams(layoutParams);
     }
 
     @Override

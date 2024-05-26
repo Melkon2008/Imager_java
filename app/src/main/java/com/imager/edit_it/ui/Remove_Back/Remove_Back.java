@@ -41,6 +41,7 @@ import java.util.UUID;
 
 public class Remove_Back extends Fragment {
 
+
     private static final int PICK_IMAGE = 1;
     private RemoveBackBinding binding;
     private ImageView imageViewBefore;

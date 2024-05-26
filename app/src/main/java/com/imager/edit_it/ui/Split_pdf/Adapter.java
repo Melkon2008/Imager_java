@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,6 +53,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextInputLayout textInputLayout1;
         public TextInputLayout textInputLayout2;
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.rajat.pdfviewer.PdfViewerActivity;
+import com.rajat.pdfviewer.util.saveTo;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -51,6 +54,11 @@ public class Split_pdf extends Fragment {
     private Button openPdfImage, plus_split, btn_save_split_pdf;
 
     TextView itemname, itempages;
+    
+    private ImageView imageView;
+
+    String fileName_arancverj;
+    
 
     Uri PDFselected;
 
@@ -72,6 +80,29 @@ public class Split_pdf extends Fragment {
         itempages = root.findViewById(R.id.lblItemDetails);
         btn_save_split_pdf = root.findViewById(R.id.save_split_pdf);
         textInputLayout = root.findViewById(R.id.father_file_name_refractor);
+        imageView = root.findViewById(R.id.Viewpdffile1);
+
+        imageView.setOnClickListener(v -> {
+            
+            
+            Uri pdf = PDFselected;
+            if(pdf != null){
+                Intent intent = PdfViewerActivity.Companion.launchPdfFromPath(
+                        requireContext(),
+                        pdf.toString(),
+                        fileName_arancverj,
+                        saveTo.ASK_EVERYTIME,
+                        false
+                );
+                requireContext().startActivity(intent);
+
+
+            }
+
+        });
+
+
+
 
 
         btn_save_split_pdf.setOnClickListener(new View.OnClickListener() {
@@ -150,8 +181,10 @@ public class Split_pdf extends Fragment {
                 PDFselected = data.getData();
                 String imagename = getpdfname(PDFselected);
                 itempages.setText(pdfPages(PDFselected));
-                itemname.setText(imagename);
-                textInputLayout.getEditText().setText(imagename);
+                fileName_arancverj = imagename.substring(0, imagename.lastIndexOf('.'));
+                itemname.setText(fileName_arancverj);
+                textInputLayout.getEditText().setText(fileName_arancverj);
+
 
 
             }
@@ -234,67 +267,10 @@ public class Split_pdf extends Fragment {
 
     }
 
-    private  void splitAndSavePdf_2() {
-        List<ItemModel> allItems1 = adapter.getAllItems();
-            int pdf_pages_start = 0;
-            int pdf_pages_end = 0;
-            ItemModel itemModel = allItems1.get(0);
-            StringBuilder pdfv1_1 = new StringBuilder();
-            StringBuilder pdfv1_2 = new StringBuilder();
-
-            pdfv1_1.append(itemModel.getItemName());
-            pdfv1_2.append(itemModel.getItemDetails());
-            String pd1 = pdfv1_1.toString();
-            String pd2 = pdfv1_2.toString();
-        if (!(pd1.isEmpty()) && !(pd2.isEmpty())) {
-            pdf_pages_start = Integer.valueOf(String.valueOf(pdfv1_1));
-            pdf_pages_end = Integer.valueOf(String.valueOf(pdfv1_2));
-        }
-
-            if ((!(pd1.isEmpty()) || !(pd2.isEmpty())) && (pdf_pages_start < pdf_pages_end) && (pdf_pages_start > 0)) {
-                String imageName = String.valueOf(textInputLayout.getEditText().getText());
-                File outputDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "PDfmarge");
-                File outputFile = new File(outputDir, imageName);
-
-                PdfWriter pdfWriter = null;
-                try {
-                    pdfWriter = new PdfWriter(new FileOutputStream(outputFile));
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                PdfDocument mergedPdf = new PdfDocument(pdfWriter);
-                Document document = new Document(mergedPdf);
-
-                try (InputStream inputStream = requireContext().getContentResolver().openInputStream(PDFselected);
-                     BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
-                    PdfReader pdfReader1 = new PdfReader(bufferedInputStream);
-                    pdfReader1.setUnethicalReading(true);
-                    PdfDocument pdfDocument1 = new PdfDocument(pdfReader1);
-                    inputStream.close();
-                    int max_pages = pdfDocument1.getNumberOfPages();
-
-                    pdfDocument1.copyPagesTo(pdf_pages_start, pdf_pages_end, mergedPdf);
-
-                    mergedPdf.close();
-                    pdfWriter.close();
-                    document.close();
-                    itemList.clear();
-                    adapter.notifyDataSetChanged();
-                    Toast.makeText(requireContext(), "Pdf document" + outputFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
-
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                } catch (java.io.IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-            }
-
-    }
 
 
         public void splitAndSavePdf() {
-            String imageName = String.valueOf(textInputLayout.getEditText().getText());
+            String imageName = String.valueOf(textInputLayout.getEditText().getText() + ".pdf   ");
             List<ItemModel> allItems = adapter.getAllItems();
             File outputDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "PDfmarge");
             if (!outputDir.exists()) {

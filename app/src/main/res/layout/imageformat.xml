@@ -27,7 +27,7 @@
 
 
             <Button
-
+                android:padding="12dp"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:backgroundTint="@color/Yellow"
@@ -102,7 +102,7 @@
 
                 <RadioButton
                     android:textColor="@color/seri"
-                    android:textSize="17dp"
+                    android:textSize="25dp"
                     android:id="@+id/webp_converter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,14 +110,14 @@
 
                 <RadioButton
                     android:textColor="@color/seri"
-                    android:textSize="17dp"
+                    android:textSize="25dp"
                     android:id="@+id/jpeg_converter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="jpeg" />
 
                 <RadioButton
-                    android:textSize="17dp"
+                    android:textSize="25dp"
                     android:textColor="@color/seri"
                     android:id="@+id/jpg_converter"
                     android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                     android:text="jpg" />
 
                 <RadioButton
-                    android:textSize="17dp"
+                    android:textSize="25dp"
                     android:textColor="@color/seri"
                     android:id="@+id/png_converter"
                     android:layout_width="wrap_content"
@@ -133,7 +133,7 @@
                     android:text="png" />
 
                 <RadioButton
-                    android:textSize="17dp"
+                    android:textSize="25dp"
                     android:textColor="@color/seri"
                     android:id="@+id/bmp_converter"
                     android:layout_width="wrap_content"
@@ -254,6 +254,7 @@
             android:layout_margin="5dp"
             android:orientation="vertical">
             <Button
+                android:padding="12dp"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:backgroundTint="@color/Yellow"
@@ -287,6 +288,8 @@
 
 
             <Button
+
+                android:padding="12dp"
                 android:id="@+id/button_choose_verj"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"

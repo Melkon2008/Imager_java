@@ -28,6 +28,7 @@
 
 
         <Button
+
             android:id="@+id/openConvertImage"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -49,7 +50,7 @@
             android:backgroundTint="@color/Yellow"
             android:drawablePadding="8dp"
             android:gravity="left|center_vertical"
-            android:text="merge files"
+            android:text="merge pdf"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -66,6 +67,20 @@
         android:drawablePadding="8dp"
         android:gravity="left|center_vertical"
         android:text="Split pdf"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/openBackgroundimage"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/Yellow"
+        android:drawablePadding="8dp"
+        android:gravity="left|center_vertical"
+        android:text="Remove Background"
         android:textColor="@color/white"
         android:textSize="16dp"
         android:textStyle="bold" />

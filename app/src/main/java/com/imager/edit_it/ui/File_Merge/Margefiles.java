@@ -98,7 +98,7 @@ public class Margefiles extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new RecyclerViewAdapter();
+        adapter = new RecyclerViewAdapter(getContext());
         adapter.setDataList(list);
 
 
@@ -135,7 +135,6 @@ public class Margefiles extends Fragment {
                 Uri PDFselected = data.getData();
                 listPDFUri.add(PDFselected);
                 tiv_array++;
-                Toast.makeText(requireContext(), "Selected PDF File:" + tiv_array, Toast.LENGTH_LONG).show();
 
                 String filename = getFileNameUri(PDFselected);
 

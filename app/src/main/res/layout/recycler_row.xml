@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/lblItemName"
-                    android:layout_marginStart="10px"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:drawablePadding="2dp"
                     android:textColor="@color/back_color"
@@ -55,15 +55,13 @@
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layaut_open_close"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:layout_below="@id/glav_recaycl">
+            <ImageView
+                android:id="@+id/Viewpdffile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_arrow_up" />
 
         </LinearLayout>
 

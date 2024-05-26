@@ -209,7 +209,7 @@ public class ImageConverter extends Fragment {
         convertAndSaveGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveImage();
+                performSaveToGallery();
             }
         });
         openGalleryButton.setOnClickListener(new View.OnClickListener() {
@@ -228,21 +228,10 @@ public class ImageConverter extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance("https://edit-it-v2-default-rtdb.europe-west1.firebasedatabase.app").getReference();
-
-        checkSavedUser();
+        
         return root;
     }
 
-    public void checkSavedUser() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("user_info", getActivity().MODE_PRIVATE);
-        login = preferences.getString("email", null);
-        password = preferences.getString("password", null);
-        if (login != null && password != null) {
-
-            signInWithEmailAndPassword(login, password);
-
-        }
-    }
 
 
     public void signInWithEmailAndPassword(String email, String password) {
@@ -382,6 +371,7 @@ public class ImageConverter extends Fragment {
 
     public int color1;
 
+
     private void showColorPickerDialog() {
         Colorpickerwindow dialog = new Colorpickerwindow();
         dialog.show(getParentFragmentManager(), "CustomColorPickerDialogFragment");
@@ -516,9 +506,16 @@ public class ImageConverter extends Fragment {
                 FileOutputStream outputStream = new FileOutputStream(file);
 
                 bitmap.compress(converter_iamge_2, vorak, outputStream);
-                if(save_cloud){
+
+
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if(currentUser != null) {
                     uploadAndSaveImage(bitmap, customDialog);
+
+                }else{
+                    customDialog.dismiss();
                 }
+
                 outputStream.flush();
                 outputStream.close();
                 MediaScannerConnection.scanFile(requireContext(), new String[]{file.getAbsolutePath()}, null, null);
@@ -526,7 +523,6 @@ public class ImageConverter extends Fragment {
                 requireActivity().runOnUiThread(() -> {
                     customDialog.setCancelable(false);
                     try {
-
                         Toast.makeText(requireContext(), "Image saved", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -535,10 +531,12 @@ public class ImageConverter extends Fragment {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
         }).start();
+    }
 
+    private boolean isUserSignedIn() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        return user != null;
     }
 
     private void uploadAndSaveImage(Bitmap bitmap, dialogwindow customDialog) {

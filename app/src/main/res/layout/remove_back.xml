@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:padding="12dp"
+                android:textStyle="bold"
+                android:id="@+id/buttonOpenImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="choose File"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/Yellow"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textBefore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Before"
+                android:textColor="@color/Yellow"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+
+            <ImageView
+                android:src="@drawable/draw2"
+                android:id="@+id/imageViewBefore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/textAfter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="After"
+                android:textColor="@color/Yellow"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+
+            <ImageView
+                android:src="@drawable/draw2"
+                android:id="@+id/imageViewAfter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+
+            <Button
+                android:padding="12dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:id="@+id/buttonSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Save"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/Yellow" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,6 +39,8 @@ android {
 
 
     dependencies {
+        implementation("io.github.afreakyelf:Pdf-Viewer:2.1.1")
+        implementation("com.squareup.okhttp3:okhttp:4.9.1")
         implementation("com.airbnb.android:lottie:6.4.0")
         implementation("com.squareup.picasso:picasso:2.71828")
         implementation("androidx.cardview:cardview:1.0.0")

@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.Login_reg.ImageDetailActivity">
 
+
+
+    <TextView
+        android:id="@+id/Image_name_cloud"
+        android:background="#cacccb"
+        android:drawableLeft="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Image name"
+        android:textSize="30dp"
+        android:textColor="@color/Yellow"
+
+        />
+
     <ImageView
         android:id="@+id/idIVImage"
         android:layout_width="match_parent"
@@ -25,7 +39,7 @@
 
 
         <Button
-            android:backgroundTint="@color/Yellow"
+
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:textColor="@color/white"
@@ -39,7 +53,7 @@
 
 
         <Button
-            android:backgroundTint="@color/Yellow"
+
             android:layout_gravity="center"
             android:id="@+id/btn_delete"
             android:drawableLeft="@drawable/deleteicon"

@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <Button
+        android:padding="12dp"
         android:layout_margin="5dp"
         android:id="@+id/btncontrastimage2"
         android:textStyle="bold"
@@ -26,62 +27,60 @@
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/Yellow">
-
-        <LinearLayout
-            android:id="@+id/glav_recaycl"
-            android:orientation="horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/Yellow">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
+                android:id="@+id/glav_recaycl"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/lblItemName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Item Name"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/lblItemDetails"
+                    <TextView
+                        android:id="@+id/lblItemName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Item Name"
+                        android:textColor="@color/back_color"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/lblItemDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/lblItemName"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="2dp"
+                        android:textColor="@color/back_color"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:text="Item Details" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/Viewpdffile1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/lblItemName"
-                    android:layout_marginStart="10px"
-                    android:layout_marginTop="10dp"
-                    android:drawablePadding="2dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/back_color"
-                    android:padding="5dp"
-                    android:text="Item Details" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_arrow_up" />
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layaut_open_close"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:layout_below="@id/glav_recaycl">
-
-        </LinearLayout>
-
-    </RelativeLayout>
+        </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
     <Button
@@ -141,6 +140,7 @@
 
 
         <Button
+            android:padding="12dp"
             android:id="@+id/save_split_pdf"
             android:text="Save"
             android:textColor="@color/white"

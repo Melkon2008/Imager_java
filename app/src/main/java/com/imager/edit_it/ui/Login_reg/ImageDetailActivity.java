@@ -1,6 +1,7 @@
 package com.imager.edit_it.ui.Login_reg;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,6 +49,9 @@ public class ImageDetailActivity extends AppCompatActivity {
     private Button btnDelete, btnsave;
 
 
+    TextView imagename;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +65,11 @@ public class ImageDetailActivity extends AppCompatActivity {
 
         btnDelete = findViewById(R.id.btn_delete);
         btnsave = findViewById(R.id.btn_save);
+        imagename = findViewById(R.id.Image_name_cloud);
+
         btnDelete.setOnClickListener(v -> deleteImage());
+
+
 
 
         btnsave.setOnClickListener(v -> imagesave());
@@ -73,6 +82,24 @@ public class ImageDetailActivity extends AppCompatActivity {
                 .load(imgPath)
                 .placeholder(R.drawable.res_dialogwindow)
                 .into(imageView);
+
+
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReferenceFromUrl(imgPath);
+        storageRef.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+            @Override
+            public void onSuccess(StorageMetadata storageMetadata) {
+
+                String imageName = storageMetadata.getName();
+                imagename.setText(getnameimage(imageName));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
     }
 
     @Override
@@ -91,6 +118,14 @@ public class ImageDetailActivity extends AppCompatActivity {
 
             return true;
         }
+    }
+
+    private String getnameimage(String path) {
+
+        String imagename1;
+        String[] parts = path.split("\\|");
+        imagename1 = parts[1];
+        return imagename1  ;
     }
 
     private void imagesave() {

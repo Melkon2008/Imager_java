@@ -47,12 +47,6 @@
         android:name="com.imager.edit_it.ui.Login_reg.Cloud_Sing_in"
         tools:layout="@layout/sign_in" />
 
-    <fragment
-        android:background="@color/seri"
-        android:label="@string/title_notifications"
-        android:id="@+id/navigation_my_account"
-        android:name="com.imager.edit_it.ui.home.home_navigation.Home_My_account"
-        tools:layout="@layout/my_account" />
 
 
     <fragment
@@ -67,6 +61,15 @@
         android:id="@+id/navigation_cloud_save"
         android:name="com.imager.edit_it.ui.Login_reg.Cloud_save"
         tools:layout="@layout/fragment_cloud_save"/>
+
+
+    <fragment
+        android:background="@color/seri"
+        android:id="@+id/navigation_remove_back"
+        android:name="com.imager.edit_it.ui.Remove_Back.Remove_Back"
+        tools:layout="@layout/remove_back"/>
+
+
 
 
 

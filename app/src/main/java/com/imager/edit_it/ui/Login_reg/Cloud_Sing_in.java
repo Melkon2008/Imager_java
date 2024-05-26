@@ -50,7 +50,7 @@ public class Cloud_Sing_in extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance("https://edit-it-v2-default-rtdb.europe-west1.firebasedatabase.app").getReference();
 
-        checkSavedUser();
+
 
         sign_in.setOnClickListener(v -> {
             String txtEmail = email.getText().toString();
@@ -93,7 +93,7 @@ public class Cloud_Sing_in extends Fragment {
             if (task.isSuccessful()) {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user != null) {
-                    saveUser(email, password);
+
 
                     Navigation.findNavController(requireView())
                             .navigate(R.id.navigation_cloud_save, null, navOptions);
@@ -104,22 +104,6 @@ public class Cloud_Sing_in extends Fragment {
         });
     }
 
-    public void saveUser(String email, String password) {
-        SharedPreferences preferences = getActivity().getSharedPreferences("user_info", getActivity().MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("email", email);
-        editor.putString("password", password);
-        editor.apply();
-    }
 
-    public void checkSavedUser() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("user_info", getActivity().MODE_PRIVATE);
-        String savedEmail = preferences.getString("email", null);
-        String savedPassword = preferences.getString("password", null);
-        if (savedEmail != null && savedPassword != null) {
-            signInWithEmailAndPassword(savedEmail, savedPassword);
-
-        }
-    }
 
 }

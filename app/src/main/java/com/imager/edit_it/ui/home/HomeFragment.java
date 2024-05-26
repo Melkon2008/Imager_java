@@ -26,11 +26,13 @@ import android.widget.TextView;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.imager.edit_it.R;
@@ -43,7 +45,7 @@ import java.util.Map;
 public class HomeFragment extends Fragment {
 
     private static final int MANAGE_EXTERNAL_STORAGE_REQUEST_CODE = 1234;
-    private Button openConverterimage, openMargeConvert, openContrastimage, openCloud;
+    private Button openConverterimage, openMargeConvert, openContrastimage, openCloud, openRemoveBack;
     private TextView txt_home;
     private FragmentHomeBinding binding;
 
@@ -88,14 +90,18 @@ public class HomeFragment extends Fragment {
         openContrastimage = root.findViewById(R.id.openContrastImage);
         openCloud = root.findViewById(R.id.Cloud_save);
         txt_home = root.findViewById(R.id.txt_home);
+        openRemoveBack = root.findViewById(R.id.openBackgroundimage);
 
         openCloud.setOnClickListener(v -> {
             requestPermissions(() -> {
                 if (isInternetAvailable(getContext())) {
-                    SharedPreferences preferences = getActivity().getSharedPreferences("user_info", getActivity().MODE_PRIVATE);
-                    String savedEmail = preferences.getString("email", null);
-                    String savedPassword = preferences.getString("password", null);
-                    if (savedEmail != null && savedPassword != null) {
+
+
+                    mAuth = FirebaseAuth.getInstance();
+
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+
+                    if (currentUser != null) {
                         Navigation.findNavController(v)
                                 .navigate(R.id.navigation_cloud_save, null, navOptions);
                     } else {
@@ -141,6 +147,17 @@ public class HomeFragment extends Fragment {
             });
         });
 
+        openRemoveBack.setOnClickListener(v -> {
+            requestPermissions(() -> {
+                if (isInternetAvailable(getContext())) {
+                    Navigation.findNavController(v)
+                            .navigate(R.id.navigation_remove_back, null, navOptions);
+                } else {
+                    Log.d("Internet", "No internet connection");
+                }
+            });
+        });
+
         return root;
     }
 
@@ -151,7 +168,6 @@ public class HomeFragment extends Fragment {
             if (!Environment.isExternalStorageManager()) {
                 requestManageExternalStoragePermission();
             } else {
-                // Permission already granted
                 onPermissionsGranted.run();
             }
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

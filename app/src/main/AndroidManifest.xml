@@ -59,6 +59,10 @@
             android:name=".ui.Login_reg.ImageDetailActivity"
             android:screenOrientation="portrait" />
 
+
+
+
+
     </application>
 
 </manifest>
